@@ -165,13 +165,3 @@ h2 {
         font-weight: 600;
     }
 }
-@mixin button-format {
-    background-color: $primary-cta;
-    border: none;
-    border-radius: 5px;
-    color: $text-cta;
-    width: 100%;
-    //40px
-    height: 5rem;
-    font-weight: 600;
-}
