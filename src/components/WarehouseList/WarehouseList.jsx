@@ -1,32 +1,50 @@
 import "../WarehouseList/WarehouseList.scss"
- function WarehouseList(props){
+import del_icon from "../../assets/icons/delete_outline-24px.svg"
+import edit_icon from "../../assets/icons/edit-24px.svg"
+import search_icon from "../../assets/icons/search-24px.svg"
+function WarehouseList(props) {
     return (
         <>
-        <form className="warehouseform">
-            <h1 className="title">Warehouses</h1>
-            <input className="warehouseform__search" type = "text" placeholder="search" />
-            <button className="warehouseform__addnew" type = "button">+ Add New Warehouse</button>
-        </form>
-        <ul className="warehouselist">
-            <li className="warehouselist__display">
-                <div className="flex-division">
-                <p className="warehouselist__title">Warehouse</p>
-                <p className="warehouselist__link">Manhattan</p>
+            <form className="warehouseform">
+                <h1 className="title">Warehouses</h1>
+                <div className="warehouseform__search">
+                <image className="icon warehouseform__icon" src={search_icon} />
+                <input className="warehouseform__input" type="text" placeholder="search" />
                 </div>
-                <div className="flex-division">
-                <p className="warehouselist__title">Contact Name</p>
-                <p className="warehouselist__content">Parmin Aujula</p>
-                </div>
-                <div className="flex-division">
-                <p className="warehouselist__title">Address</p>
-                <p className="warehouselist__content">503 Broadway, New York, USA</p>
-                </div>
-                <div className="flex-division">
-                <p className="warehouselist__title">Contact Information</p>
-                <p className="warehouselist__content">647 555 5555</p>
-                </div>
-            </li>
-        </ul>
+                <button className="warehouseform__addnew" type="button">+ Add New Warehouse</button>
+            </form>
+            <ul className="warehouselist">
+                <li className="warehouselist__element">
+                    <div className="table-column">
+                    <div className="table-cell">
+                        <p className="body-small warehouselist__title">Warehouse</p>
+                        <p className="body-small warehouselist__link">Manhattan</p>
+                    <div className="table-cell">
+                        <p className="body-small warehouselist__title">Address</p>
+                        <p className="body-small warehouselist__content">503 Broadway, New York, USA</p>
+                    </div>
+                    <div className="table-cell">
+                        <img className="icon" src={del_icon} />
+                    </div>
+                    </div>
+
+                    </div>
+                    <div className="table-column">
+                    <div className="table-cell">
+                        <p className="body-small warehouselist__title">Contact Name</p>
+                        <p className="body-small warehouselist__content">Parmin Aujula</p>
+                    </div>
+                    <div className="table-cell">
+                        <p className="body-small warehouselist__title">Contact Information</p>
+                        <p className="body-small warehouselist__content">647 555 5555 paujli@instock.com</p>
+                    </div>
+                    <div className="table-cell table-cell--right">
+                        <img className="icon" src={edit_icon} />
+                    </div>
+                        
+                    </div>
+                </li>
+            </ul>
         </>
     );
 }

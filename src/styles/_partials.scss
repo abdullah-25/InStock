@@ -58,6 +58,8 @@ $desktop-indent: calc($base-desktop-indent + ((1vw * 100) - $desktop-breakpoint)
 
 //Page Header
 h1 {
+    padding:0;
+    margin:0;
     font-size: 3.5rem;
     line-height: 4.5rem;
     font-family: TitilliumWeb;
@@ -73,6 +75,8 @@ h1 {
 
 //Subheader
 h2 {
+    padding:0;
+    margin:0;
     font-size: 2.5rem;
     line-height: 3.5rem;
     font-family: TitilliumWeb;
@@ -87,6 +91,8 @@ h2 {
 
 //Body Copy
 .body-large {
+    padding:0;
+    margin:0;
     font-size: 2rem;
     line-height: 3rem;
     font-family: TitilliumWeb;
@@ -101,6 +107,8 @@ h2 {
 
 }
 .body-medium{
+    padding:0;
+    margin:0;
     font-size: 2rem;
     line-height: 3rem;
     font-family: TitilliumWeb;
@@ -114,6 +122,8 @@ h2 {
     }
 }
 .body-small{
+    padding:0;
+    margin:0;
     font-size: 1.5rem;
     line-height: 2rem;
     font-family: TitilliumWeb;
@@ -127,6 +137,8 @@ h2 {
     }
 }
 .label-text {
+    padding:0;
+    margin:0;
     font-size: 2rem;
     line-height: 2.5rem;
     font-family: TitilliumWeb;
@@ -140,6 +152,8 @@ h2 {
     }
 }
 .link{
+    padding:0;
+    margin:0;
     font-size: 2rem;
     line-height: 2.5rem;
     font-family: TitilliumWeb;
@@ -153,6 +167,8 @@ h2 {
     }
 }
 .button-text{
+    padding:0;
+    margin:0;
     font-size: 2rem;
     line-height: 2.5rem;
     font-family: TitilliumWeb;
