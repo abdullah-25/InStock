@@ -3,8 +3,7 @@
 
 .header{
     background-color: $header-background;
-    font-family: TitilliumWeb;
-    height: 12.5rem;
+    height: 11rem;
     &__logo{
         display: flex;
         justify-content: center;
@@ -16,16 +15,13 @@
         flex-wrap: wrap;
         justify-content: space-around;
         color: white;
-        // margin: 2rem 0;
-        &-button{
+        &-button.button-text{
             border-radius: 2rem;
             background-color: black;
-            font-size: 0.5rem;
             color: white;
             border: none;
-            padding: 0.5rem;
-            margin: 2rem;
-            width: 7rem;
+            justify-content: center;
+            padding: 8px 39px 8px 39px;
         }
         &-button:hover{
             text-decoration: underline;
@@ -46,12 +42,13 @@
             margin-right: $tablet-indent;
             justify-content: space-between;
             width: 15rem;
-            
             margin: 2rem $tablet-indent;
             &-button{
+                display: flex;
+                flex-wrap: nowrap;
                 height: fit-content;
                 width: 7rem;
-                // margin: 1rem 0;
+                margin: 1rem 0;
                 font-size: 0.7rem;
             }
         }
@@ -71,11 +68,6 @@
             margin-right: $desktop-indent;
             justify-content: space-between;
             width: 16rem;
-            &-button{
-                width: 7rem;
-                margin: 2rem 0;
-                font-size: 0.9rem;
-            }
         }
         &-button:hover{
             text-decoration: underline;
