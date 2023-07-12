@@ -17,12 +17,12 @@
         &-button{
             border-radius: 2rem;
             background-color: black;
-            font-size: 1rem;
+            font-size: 0.5rem;
             color: white;
             border: none;
-            padding: 1rem;
-            margin: 2rem;
-            width: 14rem;
+            padding: 0.5rem;
+            margin: 1.5rem;
+            width: 7rem;
         }
         &-button:hover{
             text-decoration: underline;
@@ -39,12 +39,12 @@
         &__actions{
             margin-right: $tablet-indent;
             justify-content: space-between;
-            width: 20rem;
+            width: 15rem;
 
             &-button{
-                width: 9rem;
+                width: 7rem;
                 margin: 2rem 0;
-                font-size: 1.2rem;
+                font-size: 0.7rem;
             }
         }
         &-button:hover{
@@ -57,17 +57,16 @@
         justify-content: space-between;
         &__logo{
             margin-left: $desktop-indent;
-            padding: 3rem 0;
+            padding: 2rem 0;
         }
         &__actions{
             margin-right: $desktop-indent;
             justify-content: space-between;
-            width: 27rem;
-
+            width: 16rem;
             &-button{
-                width: 11rem;
-                margin: 3rem 0;
-                font-size: 1.5rem;
+                width: 7rem;
+                margin: 2rem 0;
+                font-size: 0.9rem;
             }
         }
         &-button:hover{
