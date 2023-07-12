@@ -144,35 +144,14 @@ h2 {
     line-height: 22px;
     font-family: TitilliumWeb;
     font-weight: 600;
-  }
-}
-.link {
-  padding: 0;
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.75rem;
-  font-family: TitilliumWeb;
-  font-weight: 600;
-  color: $text-link;
-  @include tablet {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-family: TitilliumWeb;
-    font-weight: 600;
-  }
-}
-.button-text {
-  padding: 0;
-  margin: 0;
-  font-size: 0.8125rem;
-  line-height: 1.25rem;
-  font-family: TitilliumWeb;
-  font-weight: 600;
-  color: $text-button;
-  @include tablet {
-    font-size: 0.875rem;
-    line-height: 22px;
-    font-family: TitilliumWeb;
-    font-weight: 600;
-  }
+    color:$text-button;
+    @include tablet {
+        font-size: .875rem;
+
+        line-height: 1.375rem;
+
+
+        font-family: TitilliumWeb;
+        font-weight: 600;
+    }
 }

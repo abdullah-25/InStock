@@ -11,7 +11,6 @@
   text-align: center;
 
   color: #5c667e;
-
   @include tablet {
     font-size: 1rem;
     line-height: 1rem;
@@ -24,11 +23,12 @@
 }
 .Footer-div {
   width: 100%;
-  height: 6rem;
   display: flex;
-  align-items: center;
   justify-content: center;
+  bottom: 0px;
+  position: fixed;
   background-color: #f7f8f9;
+  flex: 1;
   @include tablet {
     height: 16rem;
     align-items: end;
