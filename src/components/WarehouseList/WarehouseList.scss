@@ -1,0 +1,11 @@
+@use "/src/styles/partials.scss" as *;
+@use "/src/styles/colors.scss" as *;
+
+.warehouseform{
+    display:flex;
+    flex-direction: column;
+}
+.warehouselist{
+    list-style-type: none;
+    border: 1px solid $divider;
+}
