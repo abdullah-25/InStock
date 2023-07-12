@@ -11,7 +11,7 @@ function WarehouseList(props) {
                 <input className="warehouseform__input" type="text" placeholder="search" />
                 <image className="icon warehouseform__icon" src={search_icon} />
                 </div>
-                <button className="warehouseform__addnew" type="button">+ Add New Warehouse</button>
+                <button className="warehouseform__addnew" type="button"><p className="button-text">+ Add New Warehouse</p></button>
             </form>
             <ul className="warehouselist">
                 <li className="warehouselist__element">
