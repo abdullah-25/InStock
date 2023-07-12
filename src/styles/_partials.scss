@@ -28,30 +28,14 @@ $desktop-breakpoint: 1280px;
 }
 
 
-//Changes the value of 1rem from 16px to 8px. 
-html {
-    font-size: 8px;
-}
-
 //Margins for these pages are consistent, so they're defined here as variables. 
-$mobile-headline-top: 3rem;
-$mobile-headline-bottom: 1rem;
-$mobile-space-between: 2rem;
-$mobile-indent: 2rem;
+$mobile-indent: 1rem;
+$tablet-indent: 2.25rem;
 
-$tablet-headline-top: 6rem;
-$tablet-headline-bottom: 2.25rem;
-$tablet-space-between: 4.5rem;
-$tablet-indent: 4.5rem;
-
-//For now these values are the same but they're still defined here for the sake of future-proofing. 
-$desktop-headline-top: $tablet-headline-top;
-$desktop-space-between: $tablet-space-between;
-$desktop-headline-bottom: 4rem;
 //This needs to change based on the width of the window. 
 //We get the width with 100vw, find how much larger the window is than our desktop breakpoint, 
 //then divide it by 2 so that the indent can be applied to both sides. 
-$base-desktop-indent: 15rem;
+$base-desktop-indent: 7.5rem;
 $desktop-indent: calc($base-desktop-indent + ((1vw * 100) - $desktop-breakpoint)/2);
 
 //Here we can just set the headers and P tags to style set out in the style guide, then the pages can handle spacing. 
@@ -60,14 +44,14 @@ $desktop-indent: calc($base-desktop-indent + ((1vw * 100) - $desktop-breakpoint)
 h1 {
     padding:0;
     margin:0;
-    font-size: 3.5rem;
-    line-height: 4.5rem;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
     font-family: TitilliumWeb;
     font-weight: 600;
 
     @include tablet {
-        font-size: 4rem;
-        line-height: 5rem;
+        font-size: 2rem;
+        line-height: 2.5rem;
         font-family: TitilliumWeb;
         font-weight: 600;
     }
@@ -77,30 +61,42 @@ h1 {
 h2 {
     padding:0;
     margin:0;
-    font-size: 2.5rem;
-    line-height: 3.5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
     font-family: TitilliumWeb;
     font-weight: 600;
     @include tablet {
-        font-size: 3rem;
-        line-height: 3.5rem;
+        font-size: 1.5rem;
+        line-height: 2rem;
         font-family: TitilliumWeb;
         font-weight: 600;
     }
 }
-
+.table-header{
+    font-size: .6875rem;
+    line-height: 1rem;
+    font-family: TitilliumWeb;
+    font-weight: 600;
+    color:$text-table-header;
+    @include tablet{
+        font-size: .75rem;
+        line-height: 1.125rem;
+        font-family: TitilliumWeb;
+        font-weight: 600;
+    }
+}
 //Body Copy
 .body-large {
     padding:0;
     margin:0;
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: .9375rem;
+    line-height: 1.625rem;
     font-family: TitilliumWeb;
     font-weight: 400;
 
     @include tablet {
-        font-size: 2rem;
-        line-height: 3.2rem;
+        font-size: 1rem;
+        line-height: 1.75rem;
         font-family: TitilliumWeb;
         font-weight: 400;
     }
@@ -109,14 +105,14 @@ h2 {
 .body-medium{
     padding:0;
     margin:0;
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: .8125rem;
+    line-height: 1.25rem;
     font-family: TitilliumWeb;
     font-weight: 400;
 
     @include tablet {
-        font-size: 2rem;
-        line-height: 3.4rem;
+        font-size: .875rem;
+        line-height: 1.375rem;
         font-family: TitilliumWeb;
         font-weight: 400;
     }
@@ -124,14 +120,14 @@ h2 {
 .body-small{
     padding:0;
     margin:0;
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: .6875rem;
+    line-height: 1rem;
     font-family: TitilliumWeb;
     font-weight: 400;
 
     @include tablet {
-        font-size: 1.5rem;
-        line-height: 2.225rem;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
         font-family: TitilliumWeb;
         font-weight: 400;
     }
@@ -139,14 +135,13 @@ h2 {
 .label-text {
     padding:0;
     margin:0;
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: .8125rem;
+    line-height: 1.25rem;
     font-family: TitilliumWeb;
     font-weight: 600;
-    
     @include tablet {
-        font-size: 2rem;
-        line-height: 2.75rem;
+        font-size: .875rem;
+        line-height: 22px;
         font-family: TitilliumWeb;
         font-weight: 600;
     }
@@ -154,14 +149,14 @@ h2 {
 .link{
     padding:0;
     margin:0;
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 1rem;
+    line-height: 1.75rem;
     font-family: TitilliumWeb;
     font-weight: 600;
-    
+    color:$text-link;
     @include tablet {
-        font-size: 2rem;
-        line-height: 2.75rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
         font-family: TitilliumWeb;
         font-weight: 600;
     }
@@ -169,14 +164,14 @@ h2 {
 .button-text{
     padding:0;
     margin:0;
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: .8125rem;
+    line-height: 1.25rem;
     font-family: TitilliumWeb;
     font-weight: 600;
-    
+    color:$text-button;
     @include tablet {
-        font-size: 2rem;
-        line-height: 2.75rem;
+        font-size: .875rem;
+        line-height: 1.375rem;
         font-family: TitilliumWeb;
         font-weight: 600;
     }

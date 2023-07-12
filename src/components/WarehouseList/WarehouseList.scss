@@ -8,74 +8,82 @@
 .warehouseform{
     display:flex;
     flex-direction: column;
-    row-gap: $mobile-space-between;
-    padding: 0 $mobile-indent;
+    row-gap: 1rem;
+    padding: $mobile-indent;
+    @include tablet{
+        flex-direction: row;
+        align-items: baseline;
+        padding: 2rem $tablet-indent 1rem $tablet-indent;
+    }
     &__addnew{
         background-color: $button-background;
         color: $text-button;
         outline:none;
         border:none;
         border-radius: 20px;
-        padding:1.5rem;
+        padding:0.75rem;
         &:hover{
             background-color: $button-hover;
         }
     }&__search{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         padding-left: 0.5rem;
         border: 1px solid $outline;
         border-radius: 40px;
-        height: 40px;
+        padding:0.75rem;
+        @include tablet{
+            margin-left: auto;
+            margin-right: 2rem;
+        }
     }
     &__input {
         background-color: rgba(#FFFFFF,0);
         border: none;
         padding-left: 1rem;
-        flex:2;
+        
     }
     &__icon{
-        
         padding:none;
     }
 }
 .warehouselist{
     list-style-type: none;
     padding:0;
-
-    &__element{
-        border-top: 1px solid $divider;
-        border-bottom: 1px solid $divider;
-        display:flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem $mobile-indent;
-        .table-cell{
+    &__labels{
+        display:none;
+        @include tablet{
+            list-style-type: none;
             display:flex;
-            flex-direction: column;
-            &--right{
-                align-self: flex-end;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 $tablet-indent;
+            background-color: $table-header-background;
+            color: $text-table-header;
+        }
+        .list-label{
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 1rem 0;
+            width:25%;
+            &--end{
+                width:20%;
+                text-align:right;
             }
         }
-        .table-column{
-            width: 40%;
-            display: flex;
-            flex-direction: column;
-        }
-
-    }&__title{
-        color:$table-header-text;
-        font-weight: 600;
-        margin: 0.5rem 0;
-    }&__content{
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-
-    }&__link{
-        color:$text-link;
-        font-weight: 600;
     }
 }
 .icon{
     width:24px;
+}
+.sort-up{
+    background-color: $table-header-background;
+    border:none;
+    outline:none;
+    width:24px;
+    height:24px;
+    background-image: url("../../assets/icons/sort-24px.svg");
 }

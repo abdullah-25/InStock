@@ -1,49 +1,68 @@
 import "../WarehouseList/WarehouseList.scss"
-import del_icon from "../../assets/icons/delete_outline-24px.svg"
-import edit_icon from "../../assets/icons/edit-24px.svg"
+import WarehouseListElement from "../WarehouseListElement/WarehouseListElement.jsx"
 import search_icon from "../../assets/icons/search-24px.svg"
-function WarehouseList(props) {
+function WarehouseList({warehousearray, setWarehouseArray}) {
+    
     return (
         <div className="component-container">
             <form className="warehouseform">
                 <h1 className="title">Warehouses</h1>
                 <div className="warehouseform__search">
-                <input className="warehouseform__input" type="text" placeholder="search" />
-                <image className="icon warehouseform__icon" src={search_icon} />
+                <input className="warehouseform__input" type="text" placeholder="Search.." />
+                <img className="icon warehouseform__icon" src={search_icon} alt=""/>
                 </div>
                 <button className="warehouseform__addnew" type="button"><p className="button-text">+ Add New Warehouse</p></button>
             </form>
             <ul className="warehouselist">
-                <li className="warehouselist__element">
-                    <div className="table-column">
-                    <div className="table-cell">
-                        <p className="body-small warehouselist__title">Warehouse</p>
-                        <p className="body-small warehouselist__link">Manhattan</p>
-                    <div className="table-cell">
-                        <p className="body-small warehouselist__title">Address</p>
-                        <p className="body-small warehouselist__content">503 Broadway, New York, USA</p>
-                    </div>
-                    <div className="table-cell">
-                        <img className="icon" src={del_icon} />
-                    </div>
-                    </div>
-
-                    </div>
-                    <div className="table-column">
-                    <div className="table-cell">
-                        <p className="body-small warehouselist__title">Contact Name</p>
-                        <p className="body-small warehouselist__content">Parmin Aujula</p>
-                    </div>
-                    <div className="table-cell">
-                        <p className="body-small warehouselist__title">Contact Information</p>
-                        <p className="body-small warehouselist__content">647 555 5555 paujli@instock.com</p>
-                    </div>
-                    <div className="table-cell table-cell--right">
-                        <img className="icon" src={edit_icon} />
-                    </div>
-                        
-                    </div>
-                </li>
+                <ul className="warehouselist__labels">
+                   <li className="list-label label-text">
+                    Warehouse
+                    <button className="sort-up" onClick={() => setWarehouseArray([...warehousearray.sort((a, b) => {
+                        let x = a.warehouse_name.toLowerCase();
+                        let y = b.warehouse_name.toLowerCase();
+                        if (x < y) {return -1}
+                        if (x > y) {return 1}
+                        return 0;
+                    })])}></button>
+                    
+                    </li>
+                   <li className="list-label label-text">
+                    Address
+                    <button className="sort-up" onClick={() => setWarehouseArray([...warehousearray.sort((a, b) => {
+                        let x = a.address.toLowerCase();
+                        let y = b.address.toLowerCase();
+                        if (x < y) {return -1}
+                        if (x > y) {return 1}
+                        return 0;
+                    })])}></button>
+                   
+                    </li>
+                   <li className="list-label label-text">
+                    Contact Name
+                    <button className="sort-up" onClick={() => setWarehouseArray([...warehousearray.sort((a, b) => {
+                        let x = a.contact_name.toLowerCase();
+                        let y = b.contact_name.toLowerCase();
+                        if (x < y) {return -1}
+                        if (x > y) {return 1}
+                        return 0;
+                    })])}></button>
+                  
+                    </li>
+                   <li className="list-label label-text">
+                    Contact Information
+                    <button className="sort-up" onClick={() => setWarehouseArray([...warehousearray.sort((a, b) => {
+                        let x = a.contact_email.toLowerCase();
+                        let y = b.contact_email.toLowerCase();
+                        if (x < y) {return -1}
+                        if (x > y) {return 1}
+                        return 0;
+                    })])}></button>
+                    </li>
+                    <li className="list-label--end label-text">
+                    Actions
+                    </li>
+                </ul>
+               { warehousearray.map((warehouse) => <WarehouseListElement key={warehouse.id} name={warehouse.warehouse_name} address={warehouse.address} city={warehouse.city}contactName={warehouse.contact_name} contactPhone={warehouse.contact_phone} contactEmail={warehouse.contact_email} />)}
             </ul>
         </div>
     );
