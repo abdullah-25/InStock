@@ -33,113 +33,118 @@ export default function NewWarehouse() {
     } else return false;
   }
   return (
-    <div className="container">
-      <div className="container__heading">
-        <img src={arrowBack} className="container__heading--arrow" />
-        <h1>Add a New Warehouse</h1>
-      </div>
-      <hr className="container__hr" />
-      <form onSubmit={SubmitDetails}>
-        <div className="container__form">
-          <div className="container__form__warehouse">
-            <h2 className="container__form__warehouse--title">
-              Warehouse Details
-            </h2>
+    <div className="outerdiv">
+      <div className="container">
+        <div className="container__heading">
+          <img src={arrowBack} className="container__heading--arrow" />
+          <h1>Add a New Warehouse</h1>
+        </div>
+        <div className="container__hr"></div>
+        <form onSubmit={SubmitDetails}>
+          <div className="container__form">
+            <div className="container__form__warehouse">
+              <h2 className="container__form__warehouse--title">
+                Warehouse Details
+              </h2>
 
-            <div className="label-text">Warehouse Name</div>
-            <input
-              type="text"
-              className="container__form__warehouse--input"
-              placeholder="Warehouse Name"
-              name="warehouseName"
-              autocomplete="name"
-              enterkeyhint="next"
-              required
-            ></input>
-            <div className="label-text">Street Address</div>
-            <input
-              type="text"
-              className="container__form__warehouse--input"
-              placeholder="Address"
-              name="warehouseAddress"
-              autocomplete="warehouse-address"
-              required
-              enterkeyhint="next"
-            ></input>
-            <div className="label-text">City</div>
-            <input
-              type="text"
-              className="container__form__warehouse--input"
-              name="warehouseCity"
-              placeholder="City"
-              autocomplete="warehouse-city"
-              required
-              enterkeyhint="next"
-            ></input>
-            <div className="label-text">Country</div>
-            <input
-              type="text"
-              className="container__form__warehouse--input"
-              name="warehouseCountry"
-              placeholder="Country"
-              autocomplete="warehouse-country"
-              required
-              enterkeyhint="next"
-            ></input>
+              <div className="label-text">Warehouse Name</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                placeholder="Warehouse Name"
+                name="warehouseName"
+                autocomplete="name"
+                enterkeyhint="next"
+                required
+              ></input>
+              <div className="label-text">Street Address</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                placeholder="Address"
+                name="warehouseAddress"
+                autocomplete="warehouse-address"
+                required
+                enterkeyhint="next"
+              ></input>
+              <div className="label-text">City</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                name="warehouseCity"
+                placeholder="City"
+                autocomplete="warehouse-city"
+                required
+                enterkeyhint="next"
+              ></input>
+              <div className="label-text">Country</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                name="warehouseCountry"
+                placeholder="Country"
+                autocomplete="warehouse-country"
+                required
+                enterkeyhint="next"
+              ></input>
+            </div>
+            <div className="container__form__warehouse--hr"></div>
+            <div className="container__form__contact--verticalline"></div>
+            <div className="container__form__contact">
+              <h2 className="container__form__contact--title">
+                Contact Details
+              </h2>
 
-            <hr className="container__form__warehouse--hr" />
+              <div className="label-text">Contact Name</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                name="contactName"
+                autocomplete="name"
+                placeholder="Contact Name"
+                enterkeyhint="next"
+                required
+              ></input>
+              <div className="label-text">Position</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                name="contactPosition"
+                autocomplete="contact-position"
+                required
+                enterkeyhint="next"
+                placeholder="Position"
+              ></input>
+              <div className="label-text">Phone Number</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                name="contactPhone"
+                autocomplete="contact-phone"
+                required
+                enterkeyhint="next"
+                placeholder="Phone Number"
+                onClick={checkPhoneNumber}
+              ></input>
+              <div className="label-text">Email</div>
+              <input
+                type="text"
+                className="container__form__warehouse--input"
+                name="contactEmail"
+                autocomplete="contact-email"
+                required
+                enterkeyhint="next"
+                placeholder="Email"
+                onClick={checkEmail}
+              ></input>
+            </div>
           </div>
-          <div className="container__form__contact"></div>
-          <h2 className="container__form__contact--title">Contact Details</h2>
-
-          <div className="label-text">Contact Name</div>
-          <input
-            type="text"
-            className="container__form__warehouse--input"
-            name="contactName"
-            autocomplete="name"
-            placeholder="Contact Name"
-            enterkeyhint="next"
-            required
-          ></input>
-          <div className="label-text">Position</div>
-          <input
-            type="text"
-            className="container__form__warehouse--input"
-            name="contactPosition"
-            autocomplete="contact-position"
-            required
-            enterkeyhint="next"
-            placeholder="Position"
-          ></input>
-          <div className="label-text">Phone Number</div>
-          <input
-            type="text"
-            className="container__form__warehouse--input"
-            name="contactPhone"
-            autocomplete="contact-phone"
-            required
-            enterkeyhint="next"
-            placeholder="Phone Number"
-            onClick={checkPhoneNumber}
-          ></input>
-          <div className="label-text">Email</div>
-          <input
-            type="text"
-            className="container__form__warehouse--input"
-            name="contactEmail"
-            autocomplete="contact-email"
-            required
-            enterkeyhint="next"
-            placeholder="Email"
-            onClick={checkEmail}
-          ></input>
-        </div>
-        <div className="container__btndiv">
-          <button className="container__btndiv--cancel">Cancel</button>
-          <button className="container__btndiv--add">+ Add Warehouse</button>
-        </div>
-      </form>
+          <div className="container__btndiv">
+            <button className="container__btndiv--cancel">Cancel</button>
+            <button className="container__btndiv--add">+ Add Warehouse</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
