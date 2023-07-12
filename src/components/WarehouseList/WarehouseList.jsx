@@ -4,12 +4,12 @@ import edit_icon from "../../assets/icons/edit-24px.svg"
 import search_icon from "../../assets/icons/search-24px.svg"
 function WarehouseList(props) {
     return (
-        <>
+        <div className="component-container">
             <form className="warehouseform">
                 <h1 className="title">Warehouses</h1>
                 <div className="warehouseform__search">
-                <image className="icon warehouseform__icon" src={search_icon} />
                 <input className="warehouseform__input" type="text" placeholder="search" />
+                <image className="icon warehouseform__icon" src={search_icon} />
                 </div>
                 <button className="warehouseform__addnew" type="button">+ Add New Warehouse</button>
             </form>
@@ -45,7 +45,7 @@ function WarehouseList(props) {
                     </div>
                 </li>
             </ul>
-        </>
+        </div>
     );
 }
 export default WarehouseList
