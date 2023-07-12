@@ -9,8 +9,8 @@ function Header(){
                 <img src={Logo} alt="Instock Logo" className="header__logo-content" />
             </article>
             <article className="header__actions">
-                <button className= "header__actions-button warehouses-button" >Warehouses</button>
-                <button  className="header__actions-button inventory-button">Inventory</button>
+                <button className= "header__actions-button button-text" >Warehouses</button>
+                <button  className="header__actions-button button-text">Inventory</button>
             </article>
         </header>
         
