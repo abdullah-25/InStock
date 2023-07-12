@@ -1,4 +1,4 @@
-@use "/src/styles/partials/colors" as *;
+@use "./colors" as *;
 
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
@@ -17,13 +17,13 @@ $desktop-breakpoint: 1280px;
 
 @font-face {
     font-family: TitilliumWeb;
-    src: url("/src/assets/fonts/TitilliumWeb-Regular.ttf") format("truetype");
+    src: url("../assets/fonts/TitilliumWeb-Regular.ttf") format("truetype");
     font-weight: 400;
 }
 
 @font-face {
     font-family: TitilliumWeb;
-    src: url("/src/assets/fonts/TitilliumWeb-SemiBold.ttf") format("truetype");
+    src: url("../assets/fonts/TitilliumWeb-SemiBold.ttf") format("truetype");
     font-weight: 600;
 }
 

@@ -1,0 +1,77 @@
+@use "../../styles/colors" as *;
+@use "../../styles/partials" as *;
+
+.header{
+    background-color: $header-background;
+    font-family: TitilliumWeb;
+    &__logo{
+        display: flex;
+        justify-content: center;
+        padding-top: 1.5rem;
+    }
+    &__actions{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        color: white;
+        &-button{
+            border-radius: 2rem;
+            background-color: black;
+            font-size: 1rem;
+            color: white;
+            border: none;
+            padding: 1rem;
+            margin: 2rem;
+            width: 14rem;
+        }
+        &-button:hover{
+            text-decoration: underline;
+        }
+    }
+    @include tablet{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__logo{
+            margin-left: $tablet-indent;
+            padding: 2rem 0;
+        }
+        &__actions{
+            margin-right: $tablet-indent;
+            justify-content: space-between;
+            width: 20rem;
+
+            &-button{
+                width: 9rem;
+                margin: 2rem 0;
+                font-size: 1.2rem;
+            }
+        }
+        &-button:hover{
+            text-decoration: underline;
+        }
+    }
+    @include desktop{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__logo{
+            margin-left: $desktop-indent;
+            padding: 3rem 0;
+        }
+        &__actions{
+            margin-right: $desktop-indent;
+            justify-content: space-between;
+            width: 27rem;
+
+            &-button{
+                width: 11rem;
+                margin: 3rem 0;
+                font-size: 1.5rem;
+            }
+        }
+        &-button:hover{
+            text-decoration: underline;
+        }
+    }
+}
