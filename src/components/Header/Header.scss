@@ -1,0 +1,84 @@
+@use "../../styles/colors" as *;
+@use "../../styles/partials" as *;
+
+.header{
+    background-color: $header-background;
+    font-family: TitilliumWeb;
+    height: 12.5rem;
+    &__logo{
+        display: flex;
+        justify-content: center;
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+    }
+    &__actions{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        color: white;
+        // margin: 2rem 0;
+        &-button{
+            border-radius: 2rem;
+            background-color: black;
+            font-size: 0.5rem;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            margin: 2rem;
+            width: 7rem;
+        }
+        &-button:hover{
+            text-decoration: underline;
+        }
+    }
+    @include tablet{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__logo{
+            display: flex;
+            align-content: center;
+            margin-left: $tablet-indent;
+            padding: 2rem 0;
+            height: fit-content;
+        }
+        &__actions{
+            margin-right: $tablet-indent;
+            justify-content: space-between;
+            width: 15rem;
+            
+            margin: 2rem $tablet-indent;
+            &-button{
+                height: fit-content;
+                width: 7rem;
+                // margin: 1rem 0;
+                font-size: 0.7rem;
+            }
+        }
+        &-button:hover{
+            text-decoration: underline;
+        }
+    }
+    @include desktop{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__logo{
+            margin-left: $desktop-indent;
+            padding: 2rem 0;
+        }
+        &__actions{
+            margin-right: $desktop-indent;
+            justify-content: space-between;
+            width: 16rem;
+            &-button{
+                width: 7rem;
+                margin: 2rem 0;
+                font-size: 0.9rem;
+            }
+        }
+        &-button:hover{
+            text-decoration: underline;
+        }
+    }
+}
