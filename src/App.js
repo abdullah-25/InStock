@@ -8,11 +8,10 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
+      {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
         <div>Add Warehouse</div>
-      </Link>
+      </Link> */}
       <Routes>
-        <Route path="/" element={<h1>Hello</h1>} />
         <Route path="/addwarehouse" element={<NewWarehouse />} />
       </Routes>
       <Footer />
