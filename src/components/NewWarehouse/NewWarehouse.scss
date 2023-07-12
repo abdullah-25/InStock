@@ -1,0 +1,70 @@
+@use "../../styles/colors" as *;
+@use "../../styles/partials" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  box-shadow: 0px 2px 5px 0px #13182c1a;
+  top: 136px;
+  left: 16px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  &__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--arrow {
+      padding-right: 0.5rem;
+    }
+  }
+
+  &__form {
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &__warehouse {
+      &--input {
+        width: 100%;
+        height: 36px;
+        border-radius: 20px;
+        background: linear-gradient(0deg, #ffffff, #ffffff);
+        border: 1px solid #bdc5d5;
+      }
+    }
+  }
+
+  &__hr {
+    color: $divider;
+  }
+  &__btndiv {
+    background: #f7f8f9b2;
+    height: 100%;
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--cancel {
+      background: White;
+      padding: 8px 51px 8px 51px;
+      border-radius: 20px;
+      border: 1px;
+      margin-right: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    &--add {
+      background: #2e66e5;
+      color: white;
+      border-style: none;
+      padding: 8px 21px 8px 21px;
+      border-radius: 20px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
