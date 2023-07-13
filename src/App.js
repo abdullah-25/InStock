@@ -12,49 +12,57 @@ import WarehouseList from "./components/WarehouseList/WarehouseList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 import InventoryList from "./components/InventoryList/InventoryList";
-
+import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
 function App() {
-  const [inventoryArray, setInventoryArray] = useState(undefined)
-  useEffect(() => {
-      axios.get("http://localhost:8080/api/inventories").then((response) => {
-    setInventoryArray(response.data[0]);
-  }).catch(response => {
-    console.log(response);
-  })
- }, [])
-  if(!inventoryArray){
-    return (
-      <> Loading...
-      </>
-    )
-  }
-
+  // const [inventoryArray, setInventoryArray] = useState(undefined);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:8080/api/inventories")
+  //     .then((response) => {
+  //       setInventoryArray(response.data[0]);
+  //     })
+  //     .catch((response) => {
+  //       console.log(response);
+  //     });
+  // }, []);
+  // if (!inventoryArray) {
+  //   return <> Loading...</>;
+  // }
 
   return (
     <BrowserRouter>
       <Header />
-
-      <Routes>
-        <Route path="/details/:id" element={<WarehouseDetails />}/> 
+      <NewWarehouse />
 
       {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
         <div>Add Warehouse</div>
       </Link> */}
-      <Routes>
+      {/* <Routes> */}
+      {/* <Route path="/" element={<Warehouses />} /> */}
 
-         <Route path="/" element={<Warehouses />} />
+      {/* <Route
+          path="/"
+          element={
+            <InventoryList
+              inventoryArray={inventoryArray}
+              setInventoryArray={setInventoryArray}
+            />
+          }
+        />
+        <Route path="/details/:id" element={<WarehouseDetails />} />
 
-
-        <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} />
-
-        {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
-
-
-
-      </Routes>
+        <Route
+          path="/"
+          element={
+            <WarehouseList
+              warehousearray={warehouseArray}
+              setWarehouseArray={setWarehouseArray}
+            />
+          }
+        /> */}
+      {/* </Routes> */}
       <Footer />
     </BrowserRouter>
   );
