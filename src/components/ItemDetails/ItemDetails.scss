@@ -1,0 +1,38 @@
+@use "/src/styles/partials.scss" as *;
+@use "/src/styles/colors.scss" as *;
+
+.detailheader{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    &__title{
+        margin-right: auto;
+        margin-left: 1rem;
+    }
+}
+.details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    &__content{
+        &--instock{
+            color:$label-in-stock;
+            background-color: $label-in-stock-background;
+            border-radius: 10px;
+            width: 3.8125rem;
+            text-align: center;
+        }&--outofstock{
+            color:$label-out-of-stock;
+            background-color:$label-out-of-stock-background;
+            border-radius: 10px;
+            width: 5.375rem;
+            text-align: center;
+        }
+    }
+    &__section{
+        width:50%;
+        &--stretch{
+            width:100%;
+        }
+    }
+}
