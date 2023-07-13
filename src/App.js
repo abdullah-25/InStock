@@ -1,8 +1,9 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 import WarehouseList from "./components/WarehouseList/WarehouseList";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 function App() {
@@ -20,10 +21,13 @@ function App() {
   //       </>
   //     )
   //   }
-
   return (
     <BrowserRouter>
       <Header />
+      {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
+        <div>Add Warehouse</div>
+      </Link> */}
+      <NewWarehouse />
       <Routes>
         {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
       </Routes>
