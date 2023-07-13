@@ -7,21 +7,20 @@ import WarehouseList from "./components/WarehouseList/WarehouseList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 function App() {
-  // const [warehouseArray, setWarehouseArray] = useState(undefined);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8080/api/warehouses")
-  //     .then((response) => {
-  //       setWarehouseArray(response.data);
-  //     })
-  //     .catch((response) => {
-  //       console.log(response);
-  //     });
-  // }, []);
-  // if (!warehouseArray) {
-  //   return <> Loading...</>;
-  // }
-
+  //   const [warehouseArray, setWarehouseArray] = useState(undefined)
+  //   useEffect(() => {
+  //       axios.get("http://localhost:8080/api/warehouses").then((response) => {
+  //     setWarehouseArray(response.data);
+  //   }).catch(response => {
+  //     console.log(response);
+  //   })
+  //  }, [])
+  //   if(!warehouseArray){
+  //     return (
+  //       <> Loading...
+  //       </>
+  //     )
+  //   }
   return (
     <BrowserRouter>
       <Header />
@@ -30,15 +29,7 @@ function App() {
       </Link> */}
       <NewWarehouse />
       <Routes>
-        {/* <Route
-          path="/"
-          element={
-            <WarehouseList
-              warehousearray={warehouseArray}
-              setWarehouseArray={setWarehouseArray}
-            />
-          }
-        /> */}
+        {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>
