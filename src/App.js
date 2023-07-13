@@ -3,8 +3,12 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails.jsx";
+
 import Warehouses from "./pages/Warehouses/Warehouses";
 import WarehouseList from "./components/WarehouseList/WarehouseList";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -32,6 +36,10 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+
+      <Routes>
+        <Route path="/details/:id" element={<WarehouseDetails />}/> 
+
       {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
         <div>Add Warehouse</div>
       </Link> */}
@@ -43,6 +51,7 @@ function App() {
         <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} />
 
         {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
+
 
 
       </Routes>
