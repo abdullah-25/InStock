@@ -1,38 +1,76 @@
-@use "/src/styles/partials.scss" as *;
-@use "/src/styles/colors.scss" as *;
+@use "/src/styles/partials" as *;
+@use "/src/styles/colors" as *;
 
-.detailheader{
-    display:flex;
+.detailheader {
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    &__title{
+
+    @include tablet {
+        border-bottom: 1px solid $divider;
+    }
+
+    &__title {
         margin-right: auto;
         margin-left: 1rem;
     }
 }
-.details{
-    display: flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    &__content{
-        &--instock{
-            color:$label-in-stock;
+
+.details {
+
+
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__content {
+
+        &--instock {
+            color: $label-in-stock;
             background-color: $label-in-stock-background;
             border-radius: 10px;
-            width: 3.8125rem;
+            width: 4.8125rem;
             text-align: center;
-        }&--outofstock{
-            color:$label-out-of-stock;
-            background-color:$label-out-of-stock-background;
+        }
+
+        &--outofstock {
+            color: $label-out-of-stock;
+            background-color: $label-out-of-stock-background;
             border-radius: 10px;
-            width: 5.375rem;
+            width: 6.375rem;
             text-align: center;
         }
     }
-    &__section{
-        width:50%;
-        &--stretch{
-            width:100%;
+
+    &__section {
+        width: 50%;
+
+        &--stretch {
+            width: 100%;
+
+            @include tablet {
+                width: auto;
+            }
+        }
+    }
+}
+
+.section-tablet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+
+    @include tablet {
+        width: 50%;
+        padding: $tablet-indent;
+    }
+
+    &--left {
+        @include tablet {
+
+            border-right: 1px solid $divider;
         }
     }
 }
