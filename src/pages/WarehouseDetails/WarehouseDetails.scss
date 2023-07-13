@@ -7,4 +7,10 @@
     border-radius: 4px;
     position:relative;
     transform: translateY(-3rem);
+    @include tablet{
+        margin: 0 $tablet-indent;
+        transform: translateY(-5.5rem);
+    }@include desktop {
+        margin: 0 $desktop-indent;
+    }
 }

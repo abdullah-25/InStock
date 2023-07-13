@@ -7,6 +7,16 @@
     justify-content: space-between;
     padding: $mobile-indent;
     border-bottom: 1px solid $divider;
+    @include tablet{
+        padding: $mobile-indent $tablet-indent;
+        justify-content: flex-start;
+    }
+    &__title{
+        @include tablet{
+            margin-right:auto;
+            margin-left: 1rem;
+        }
+    }
     &__back{
         background-color: rgba(black, 0);
         background-image: url("../../assets/icons/arrow_back-24px.svg");
@@ -15,7 +25,22 @@
         width:24px;
         outline:none;
         border:none;
-    }&__edit{
+        
+    }&__edit--tablet{
+        display:none;
+        @include tablet{
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            padding:0 1rem;
+            column-gap: 0.5rem;
+            border:none;
+            border-radius: 2rem;
+            background-color: $button-background;
+            color:$text-button;
+        }
+    }
+    &__edit--mobile{
      background-color: $button-background;
         border-radius: 50%;
         background-image: url("../../assets/icons/edit-24px.svg");
@@ -25,6 +50,9 @@
         height:36px;
         outline:none;
         border:none;
+        @include tablet{
+            display:none;
+        }
     }
 }
 .details{
@@ -34,7 +62,15 @@
     justify-content: space-between;
     row-gap: 1rem;
     padding: $mobile-indent;
+    @include tablet{
+        flex-wrap: nowrap;
+        padding: $mobile-indent $tablet-indent;
+    }
     &__title{
         width:100%;
+        @include tablet{
+            width:40%;
+            border-right: 1px solid $divider;
+        }
     }
 }

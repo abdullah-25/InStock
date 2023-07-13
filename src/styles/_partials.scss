@@ -141,17 +141,11 @@ h2 {
   font-weight: 600;
   @include tablet {
     font-size: 0.875rem;
-    line-height: 22px;
-    font-family: TitilliumWeb;
-    font-weight: 600;
-    color: $text-button;
-    @include tablet {
-      font-size: 0.875rem;
 
       line-height: 1.375rem;
 
       font-family: TitilliumWeb;
       font-weight: 600;
-    }
+ 
   }
 }

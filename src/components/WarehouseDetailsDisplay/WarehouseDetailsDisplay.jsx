@@ -1,18 +1,23 @@
 
 import "./WarehouseDetailsDisplay.scss";
-
-function WarehouseDetailsDisplay({ warehouse_name, address, contact_name, contact_email,contact_phone, contact_position}){
+import edit from "../../assets/icons/edit-24px.svg"; 
+function WarehouseDetailsDisplay({ warehouse_name, address,city, contact_name, contact_email,contact_phone, contact_position}){
     return (
         <>
         <header className="detailheader">
             <button className="detailheader__back"></button>
             <h1 className="detailheader__title">{warehouse_name}</h1>
-            <button className="detailheader__edit"></button>
+            <button className="detailheader__edit--mobile"></button>
+            <button className="detailheader__edit--tablet">
+                <img src = {edit} alt = "" />
+                Edit
+                </button>
         </header>
         <article className="details">
             <div className="details__title">
                 <p className="label-text">WAREHOUSE ADDRESS</p>
                 <p className="body-medium">{address}</p>
+                <p className="body-medium">{city}</p>
             </div>
             <div className="details__section">
             <p className="label-text">CONTACT NAME</p>
