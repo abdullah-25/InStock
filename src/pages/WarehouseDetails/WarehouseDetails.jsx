@@ -5,4 +5,5 @@ function WarehouseDetails(){
     )
 }
 
+import "../PagePositioning.scss"
 export default WarehouseDetails;
