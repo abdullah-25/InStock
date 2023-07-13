@@ -41,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/details/:id" element={<WarehouseDetails />}/> 
 
+
       {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
         <div>Add Warehouse</div>
       </Link> */}
@@ -57,6 +58,12 @@ function App() {
     created_at: "2023-07-12T16:11:34.000Z",
     updated_at: "2023-07-12T16:11:34.000Z"
   }}/>} />
+
+         <Route path="/" element={<Warehouses />} />
+
+
+        {/* <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} /> */}
+
 
         {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
 

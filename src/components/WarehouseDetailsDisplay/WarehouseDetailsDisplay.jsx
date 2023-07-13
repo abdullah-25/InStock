@@ -1,6 +1,6 @@
 
 import "./WarehouseDetailsDisplay.scss";
-import edit from "../../assets/icons/edit-24px.svg"; 
+import edit from "../../assets/icons/edit-button-24px.svg"; 
 function WarehouseDetailsDisplay({ warehouse_name, address,city, contact_name, contact_email,contact_phone, contact_position}){
     return (
         <>
