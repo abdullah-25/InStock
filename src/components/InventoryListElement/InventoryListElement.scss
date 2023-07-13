@@ -20,7 +20,7 @@
         }
 
         &:hover {
-            background-color: rgba(#2E66E5, 0.07);
+            background-color: $list-element-hover;
         }
 
         .table-cell {
@@ -31,7 +31,11 @@
             @include tablet {
                 width: 25%;
             }
-
+            &--empty{
+                @include tablet {
+                    display:none;
+                }
+            }
             &--right {
                 align-items: flex-end;
             }
@@ -42,7 +46,6 @@
 
     &__title {
         color: $text-table-header;
-        font-weight: 600;
         margin: 0.5rem 0;
 
         @include tablet {
@@ -57,13 +60,13 @@
             color:$label-in-stock;
             background-color: $label-in-stock-background;
             border-radius: 10px;
-            width: 61px;
+            width: 3.8125rem;
             text-align: center;
         }&--outofstock{
             color:$label-out-of-stock;
             background-color:$label-out-of-stock-background;
             border-radius: 10px;
-            width: 61px;
+            width: 5.375rem;
             text-align: center;
         }
     }

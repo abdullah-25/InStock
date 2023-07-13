@@ -17,46 +17,26 @@ function InventoryList({inventoryArray, setInventoryArray}) {
                 <ul className="inventorylist__labels">
                    <li className="list-label label-text">
                     ITEM
-                    <button className="sort-up" onClick={() => setInventoryArray([...inventoryArray.sort((a, b) => {
-                        let x = a.name.toLowerCase();
-                        let y = b.name.toLowerCase();
-                        if (x < y) {return -1}
-                        if (x > y) {return 1}
-                        return 0;
-                    })])}></button>
+                    <button className="sort-up"></button>
                     
                     </li>
                    <li className="list-label label-text">
                     CATEGORY
-                    <button className="sort-up" onClick={() => setInventoryArray([...inventoryArray.sort((a, b) => {
-                        let x = a.category.toLowerCase();
-                        let y = b.category.toLowerCase();
-                        if (x < y) {return -1}
-                        if (x > y) {return 1}
-                        return 0;
-                    })])}></button>
+                    <button className="sort-up" ></button>
                    
                     </li>
                    <li className="list-label label-text">
                     STATUS
-                    <button className="sort-up" onClick={() => setInventoryArray([...inventoryArray.sort((a, b) => {
-                        let x = a.status.toLowerCase();
-                        let y = b.status.toLowerCase();
-                        if (x < y) {return -1}
-                        if (x > y) {return 1}
-                        return 0;
-                    })])}></button>
+                    <button className="sort-up" ></button>
                   
                     </li>
                    <li className="list-label label-text">
                     QTY
-                    <button className="sort-up" onClick={() => setInventoryArray([...inventoryArray.sort((a, b) => {
-                        let x = a.quantity.toLowerCase();
-                        let y = b.quantity.toLowerCase();
-                        if (x < y) {return -1}
-                        if (x > y) {return 1}
-                        return 0;
-                    })])}></button>
+                    <button className="sort-up" ></button>
+                    </li>
+                    <li className="list-label label-text">
+                    WAREHOUSE
+                    <button className="sort-up" ></button>
                     </li>
                     <li className="list-label--end label-text">
                     ACTIONS
