@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
+import Warehouses from "./pages/Warehouses/Warehouses";
 import WarehouseList from "./components/WarehouseList/WarehouseList";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -27,9 +27,8 @@ function App() {
       {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
         <div>Add Warehouse</div>
       </Link> */}
-      <NewWarehouse />
       <Routes>
-        {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
+         <Route path="/" element={<Warehouses />} />
       </Routes>
       <Footer />
     </BrowserRouter>
