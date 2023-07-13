@@ -1,4 +1,5 @@
 import WarehouseDetailsDisplay from "../../components/WarehouseDetailsDisplay/WarehouseDetailsDisplay";
+import "../WarehouseDetails/WarehouseDetails.scss"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -21,7 +22,9 @@ function WarehouseDetails(props) {
     console.log(warehouse);
     return (
         <>
-        <WarehouseDetailsDisplay {...warehouse} />
+        <div className="positioning">
+                    <WarehouseDetailsDisplay {...warehouse} />
+        </div>
         </>
     )
 }
