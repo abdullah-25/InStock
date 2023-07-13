@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+
 import InventoryList from "./components/InventoryList/InventoryList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {useEffect, useState} from 'react';
@@ -21,11 +22,20 @@ function App() {
     )
   }
 
+
   return (
     <BrowserRouter>
       <Header />
+      {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
+        <div>Add Warehouse</div>
+      </Link> */}
+      <NewWarehouse />
       <Routes>
+
         <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} />
+
+        {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
+
       </Routes>
       <Footer />
     </BrowserRouter>
