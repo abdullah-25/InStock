@@ -1,0 +1,40 @@
+@use "/src/styles/partials.scss" as *;
+@use "/src/styles/colors.scss" as *;
+
+.detailheader{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $mobile-indent;
+    border-bottom: 1px solid $divider;
+    &__back{
+        background-color: rgba(black, 0);
+        background-image: url("../../assets/icons/arrow_back-24px.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        width:24px;
+        outline:none;
+        border:none;
+    }&__edit{
+     background-color: $button-background;
+        border-radius: 50%;
+        background-image: url("../../assets/icons/edit-24px.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        width:36px;
+        height:36px;
+        outline:none;
+        border:none;
+    }
+}
+.details{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 1rem;
+    padding: $mobile-indent;
+    &__title{
+        width:100%;
+    }
+}
