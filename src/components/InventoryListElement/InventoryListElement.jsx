@@ -1,7 +1,6 @@
 import "../InventoryListElement/InventoryListElement.scss"
 
 function InventoryListElement({ item,category,status,quantity,warehouse }) {
-    console.log(status);
     return (
         <li className="inventorylist__element">
                 <div className="table-cell">

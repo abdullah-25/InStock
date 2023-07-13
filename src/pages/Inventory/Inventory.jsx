@@ -2,6 +2,7 @@ import "../PagePositioning.scss"
 import InventoryList from "../../components/InventoryList/InventoryList.jsx"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import InventoryForm from "../../components/InventoryForm/InventoryForm";
 
 function Inventory(){
     const [inventoryArray, setInventoryArray] = useState(undefined)
@@ -22,6 +23,7 @@ function Inventory(){
     }
     return (
         <div className="positioning">
+            <InventoryForm />
             <InventoryList inventoryArray={inventoryArray}/>
         </div>
     )
