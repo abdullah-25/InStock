@@ -14,6 +14,7 @@ import axios from "axios";
 
 
 import InventoryList from "./components/InventoryList/InventoryList";
+import ItemDetails from "./components/ItemDetails/ItemDetails";
 
 
 function App() {
@@ -39,10 +40,30 @@ function App() {
 
       <Routes>
         <Route path="/details/:id" element={<WarehouseDetails />}/> 
+
+
+      {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
+        <div>Add Warehouse</div>
+      </Link> */}
+
+
+        <Route path="/" element={<ItemDetails item={{
+    id: 5,
+    warehouse_name: "Manhatten",
+    item_name: "Shampoo",
+    description: "Natural shampoo made from 99% biodegradable ingredients.",
+    category: "Health",
+    status: "In Stock",
+    quantity: 4350,
+    created_at: "2023-07-12T16:11:34.000Z",
+    updated_at: "2023-07-12T16:11:34.000Z"
+  }}/>} />
+
          <Route path="/" element={<Warehouses />} />
 
 
         {/* <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} /> */}
+
 
         {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
 
