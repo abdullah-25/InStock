@@ -1,7 +1,8 @@
+import "../PagePositioning.scss"
 function EditInventoryItem(){
     return (
-        <>
-        </>
+        <div className="positioning">
+        </div>
     )
 }
 

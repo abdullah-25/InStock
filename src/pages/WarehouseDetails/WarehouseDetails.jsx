@@ -29,4 +29,5 @@ function WarehouseDetails(props) {
     )
 }
 
+import "../PagePositioning.scss"
 export default WarehouseDetails;
