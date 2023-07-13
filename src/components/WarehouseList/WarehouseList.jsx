@@ -62,7 +62,7 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
                     Actions
                     </li>
                 </ul>
-               { warehousearray.map((warehouse) => <WarehouseListElement key={warehouse.id} name={warehouse.warehouse_name} address={warehouse.address} city={warehouse.city}contactName={warehouse.contact_name} contactPhone={warehouse.contact_phone} contactEmail={warehouse.contact_email} />)}
+               { warehousearray.map((warehouse) => <WarehouseListElement id={warehouse.id} name={warehouse.warehouse_name} address={warehouse.address} city={warehouse.city}contactName={warehouse.contact_name} contactPhone={warehouse.contact_phone} contactEmail={warehouse.contact_email} warehousearray={warehousearray} setWarehouseArray={setWarehouseArray} />)}
             </ul>
         </div>
     );
