@@ -9,18 +9,19 @@ function InventoryListElement({ item,category,status,quantity,warehouse }) {
                     <p className="body-small inventorylist__link">{item}</p>
                 </div>
                 <div className="table-cell">
+                    <p className="body-small inventorylist__title">STATUS</p>
+                    <p className="body-small inventorylist__content--instock inventorylist__content">{status}</p>
+                </div>
+                <div className="table-cell">
                     <p className="body-small inventorylist__title">CATEGORY</p>
                     <p className="body-small inventorylist__content">{category}</p>
                 </div>
-           
-           
                 <div className="table-cell">
-                    <p className="body-small inventorylist__title">STATUS</p>
-                    <p className="body-small inventorylist__content">{status}</p>
-                </div>
-                <div className="table-cell">
-                    <p className="body-small inventorylist__title">QUANTITY</p>
+                    <p className="body-small inventorylist__title">QTY</p>
                     <p className="body-small inventorylist__content">{quantity}</p>
+                </div>  
+                <div className="table-cell">
+                    {/* This cell left intentionally blank */}
                 </div>
                 <div className="table-cell">
                     <p className="body-small inventorylist__title">WAREHOUSE</p>

@@ -53,7 +53,19 @@
     &__content {
         font-weight: 600;
         margin-bottom: 0.5rem;
-
+        &--instock{
+            color:$label-in-stock;
+            background-color: $label-in-stock-background;
+            border-radius: 10px;
+            width: 61px;
+            text-align: center;
+        }&--outofstock{
+            color:$label-out-of-stock;
+            background-color:$label-out-of-stock-background;
+            border-radius: 10px;
+            width: 61px;
+            text-align: center;
+        }
     }
 
     &__link {
