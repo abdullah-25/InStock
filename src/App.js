@@ -1,26 +1,34 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import WarehouseList from "./components/WarehouseList/WarehouseList";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+
+import InventoryList from "./components/InventoryList/InventoryList";
+
+
 function App() {
-  //   const [warehouseArray, setWarehouseArray] = useState(undefined)
-  //   useEffect(() => {
-  //       axios.get("http://localhost:8080/api/warehouses").then((response) => {
-  //     setWarehouseArray(response.data);
-  //   }).catch(response => {
-  //     console.log(response);
-  //   })
-  //  }, [])
-  //   if(!warehouseArray){
-  //     return (
-  //       <> Loading...
-  //       </>
-  //     )
-  //   }
+  const [inventoryArray, setInventoryArray] = useState(undefined)
+  useEffect(() => {
+      axios.get("http://localhost:8080/api/inventories").then((response) => {
+    setInventoryArray(response.data[0]);
+  }).catch(response => {
+    console.log(response);
+  })
+ }, [])
+  if(!inventoryArray){
+    return (
+      <> Loading...
+      </>
+    )
+  }
+
+
   return (
     <BrowserRouter>
       <Header />
@@ -28,7 +36,15 @@ function App() {
         <div>Add Warehouse</div>
       </Link> */}
       <Routes>
+
          <Route path="/" element={<Warehouses />} />
+
+
+        <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} />
+
+        {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
+
+
       </Routes>
       <Footer />
     </BrowserRouter>
