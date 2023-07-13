@@ -1,15 +1,26 @@
 import "../WarehouseListElement/WarehouseListElement.scss";
-import ReactModal from "react-modal";
 import { useState } from "react";
 import { Modal } from "@mui/material";
+import axios from "axios";
 function WarehouseListElement({
+  id,
   name,
   address,
   city,
   contactName,
   contactPhone,
   contactEmail,
+  warehouseArray,
+  setWarehouseArray
 }) {
+  function handleDelete(){
+   axios.delete(`http://localhost:8080/api/warehouses/${id}`)
+   .then(()=>{
+    axios.get(`http://localhost:8080/api/warehouses`)
+    .then((response)=>{setWarehouseArray(response.data)
+      handleClose()})
+    })
+  }
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,14 +49,20 @@ function WarehouseListElement({
       <div className="icon-container">
         <div className="table-cell">
           <button className="icon-delete" onClick={handleOpen}></button>
-          <Modal open={open} onClose={handleClose}>
-            <div >
-              <h1>Delete Washington warehouse?</h1>
-              <p>
+          <Modal open={open} onClose={handleClose} className="modal">
+            <div className="modal-div">
+              <h1 className="modal__title">Delete {city} warehouse?</h1>
+              <p className="modal__text">
                 Please confirm 
-                that you’d like to delete the Washington from the
+                that you’d like to delete the {city} from the
                 list of warehouses. You won’t be able to undo this action.
               </p>
+              <div className="button-style">
+              <div className="modal-button__div">
+              <button className="modal-cancel" onClick={handleClose}>Cancel</button>
+              <button className="modal-delete"onClick={handleDelete}>Delete</button>
+              </div>
+              </div>
             </div>
           </Modal>
         </div>

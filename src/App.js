@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 function App() {
-  const [warehouseArray, setWarehouseArray] = useState(undefined)
+  const [warehouseArray, setWarehouseArray] = useState(null)
   useEffect(() => {
       axios.get("http://localhost:8080/api/warehouses").then((response) => {
     setWarehouseArray(response.data);
