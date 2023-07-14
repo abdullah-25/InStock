@@ -14,7 +14,6 @@ import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDeta
 import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import EditWarehouses from "./pages/EditWarehouses/EditWarehouses";
 
-
 // import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 // import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails.jsx";
@@ -22,13 +21,10 @@ import EditWarehouses from "./pages/EditWarehouses/EditWarehouses";
 // import Warehouses from "./pages/Warehouses/Warehouses";
 // import WarehouseList from "./components/WarehouseList/WarehouseList";
 
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 import InventoryList from "./components/InventoryList/InventoryList";
-
 
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
@@ -38,77 +34,24 @@ import ItemDetails from "./components/ItemDetails/ItemDetails";
 // import ItemDetails from "./components/ItemDetails/ItemDetails";
 
 function App() {
-
   return (
     <BrowserRouter>
       <Header />
-
-      <EditInventory />
-      <AddInventory />
+      <Routes>
+        <Route path="/" element={<Warehouses />} />
+        <Route path="/:id" element={<WarehouseDetails />} />
+        <Route path="/edit/:id" element={<EditWarehouses />} />
+        <Route path="/new" element={<AddNewWarehouse />} />
+        <Route path="/inventory" element={<Inventory />} />
+        {/* <Route path="/inventory/:id" element={<InventoryItemDetails/>}/> */}
+        {/* <Route path="/inventory/edit/:id" element={<EditInventoryItem />}/> */}
+        <Route path="/inventory/add/" element={<AddNewInventoryItem />} />
+        {/* <Route path="/delete/" element={<Delete />}/> */}
+      </Routes>
 
       <Footer />
-      </BrowserRouter>
-   
+    </BrowserRouter>
   );
 }
 
 export default App;
-
-{
-  /* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
-  <div>Add Warehouse</div>
-</Link> */
-}
-
-{
-  /* <Routes> */
-}
-{
-  /* <Route path="/" element={<Warehouses />} /> */
-}
-
-{
-  /* <Route
-    path="/"
-    element={
-      <InventoryList
-        inventoryArray={inventoryArray}
-        setInventoryArray={setInventoryArray}
-      />
-    }
-  />
-  <Route path="/details/:id" element={<WarehouseDetails />} />
-
-  <Route
-    path="/"
-    element={
-      <WarehouseList
-        warehousearray={warehouseArray}
-        setWarehouseArray={setWarehouseArray}
-      />
-    }
-  /> */
-}
-{
-  /* </Routes> */
-}
-
-//   <Route path="/" element={<ItemDetails item={{
-// id: 5,
-// warehouse_name: "Manhatten",
-// item_name: "Shampoo",
-// description: "Natural shampoo made from 99% biodegradable ingredients.",
-// category: "Health",
-// status: "In Stock",
-// quantity: 4350,
-// created_at: "2023-07-12T16:11:34.000Z",
-// updated_at: "2023-07-12T16:11:34.000Z"
-// }}/>} />
-
-//    <Route path="/" element={<Warehouses />} />
-
-//   {/* <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} /> */}
-
-//   {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
-
-// </Routes>
