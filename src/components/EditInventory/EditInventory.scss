@@ -13,12 +13,10 @@
   border: 1px solid #bdc5d5;
   margin-bottom: 1rem;
   padding-left: 1rem;
+  padding-top: 0.5rem;
 
   &--invalid {
     border: 1px solid red;
-  }
-
-  &--status {
   }
 }
 

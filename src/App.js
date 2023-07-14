@@ -43,6 +43,7 @@ function App() {
     <>
       <Header />
 
+      <EditInventory />
       <AddInventory />
       <Footer />
     </>

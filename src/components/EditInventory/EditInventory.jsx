@@ -12,12 +12,12 @@ export default function EditInventory({
   quantity,
   warehouseName,
 }) {
-  const [itemName, setitemName] = useState("");
-  const [Category, setCategory] = useState("");
-  const [Status, setStatus] = useState("");
-  const [Description, setDescription] = useState("");
-  const [Quantity, setQuantity] = useState("");
-  const [Warehouse, setWarehouse] = useState("");
+  const [itemName, setitemName] = useState(item_name);
+  const [Category, setCategory] = useState(category);
+  const [Status, setStatus] = useState(status);
+  const [Description, setDescription] = useState(description);
+  const [Quantity, setQuantity] = useState(quantity);
+  const [Warehouse, setWarehouse] = useState(warehouseName);
   const [QuantityShown, setQuantityShown] = useState("");
 
   const [errors, setErrors] = useState("");
@@ -32,6 +32,7 @@ export default function EditInventory({
     setStatus(e.target.value);
     setQuantityShown(e.target.value);
     showQuantity(QuantityShown);
+    console.log(QuantityShown);
   }
   function handleChangeQuantity(e) {
     setQuantity(e.target.value);
@@ -105,8 +106,9 @@ export default function EditInventory({
                     ? "container__form__warehouse--input--invalid"
                     : ""
                 }`}
-                placeholder={item_name}
+                placeholder={"Item Name"}
                 name="itemName"
+                value={itemName}
                 onChange={handleChangeitemName}
               ></input>
               {errors.itemName && (
@@ -121,8 +123,9 @@ export default function EditInventory({
                 className={`description ${
                   errors.description ? "description--invalid" : ""
                 }`}
-                placeholder={description}
+                placeholder="Description"
                 name="description"
+                value={description}
                 onChange={handleChangeDescription}
               ></textarea>
               {errors.description && (
@@ -140,9 +143,11 @@ export default function EditInventory({
                     : ""
                 }`}
                 name="category"
-                placeholder={category}
                 onChange={handleChangeCategory}
               >
+                <option value="" disabled selected hidden>
+                  {category}
+                </option>
                 <option value="Electronics">Electronics </option>
                 <option value="Gear">Gear</option>
                 <option value="Health">Health</option>
@@ -172,8 +177,8 @@ export default function EditInventory({
                       errors.status ? "description__status--invalid" : ""
                     }`}
                     name="Instock"
-                    placeholder={status}
-                    value="Instock"
+                    placeholder="status"
+                    value={status}
                     onChange={handleChangeStatus}
                   ></input>
                   <label for="Instock">In Stock</label>
@@ -185,7 +190,7 @@ export default function EditInventory({
                       errors.status ? "description__status--invalid" : ""
                     }`}
                     name="OutofStock"
-                    value="Outofstock"
+                    value={status}
                     onChange={handleChangeStatus}
                   ></input>
                   <label for="Out of stock">Out of Stock</label>
@@ -205,7 +210,7 @@ export default function EditInventory({
                     }`}
                     //placeholder="name"
                     name="quantity"
-                    placeholder={quantity}
+                    value={quantity}
                     onChange={handleChangeQuantity}
                   ></input>
                 </div>
@@ -233,10 +238,14 @@ export default function EditInventory({
                     : ""
                 }`}
                 name="warehouseName"
-                placeholder={warehouseName}
+                placeholder="Warehouse Name"
+                value={warehouseName}
                 onChange={handleChangeWarehouse}
               >
                 {" "}
+                <option value="" disabled selected hidden>
+                  {warehouseName}
+                </option>
                 <option value="Manhattan">Manhattan</option>
                 <option value="Washington">Washington</option>
                 <option value="Jersey">Jersey</option>

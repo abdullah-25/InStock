@@ -4,14 +4,7 @@ import { useState } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "../EditInventory/EditInventory.scss";
 
-export default function AddInventory({
-  item_name,
-  category,
-  description,
-  status,
-  quantity,
-  warehouseName,
-}) {
+export default function AddInventory() {
   const [itemName, setitemName] = useState("");
   const [Category, setCategory] = useState("");
   const [Status, setStatus] = useState("");
@@ -140,9 +133,11 @@ export default function AddInventory({
                     : ""
                 }`}
                 name="category"
-                placeholder="Please Select"
                 onChange={handleChangeCategory}
               >
+                <option value="" disabled selected hidden>
+                  Please Select
+                </option>
                 <option value="Electronics">Electronics </option>
                 <option value="Gear">Gear</option>
                 <option value="Health">Health</option>
@@ -172,7 +167,6 @@ export default function AddInventory({
                       errors.status ? "description__status--invalid" : ""
                     }`}
                     name="Instock"
-                    placeholder={status}
                     value="Instock"
                     onChange={handleChangeStatus}
                   ></input>
@@ -236,6 +230,9 @@ export default function AddInventory({
                 onChange={handleChangeWarehouse}
               >
                 {" "}
+                <option value="" disabled selected hidden>
+                  Please Select
+                </option>
                 <option value="Manhattan">Manhattan</option>
                 <option value="Washington">Washington</option>
                 <option value="Jersey">Jersey</option>
@@ -255,7 +252,7 @@ export default function AddInventory({
           </div>
           <div className="container__btndiv">
             <button className="container__btndiv--cancel">Cancel</button>
-            <button className="container__btndiv--add">+ Add Warehouse</button>
+            <button className="container__btndiv--add">+ Add Item</button>
           </div>
         </form>
       </div>
