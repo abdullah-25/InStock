@@ -1,8 +1,9 @@
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "../EditInventory/EditInventory.scss";
+import axios from "axios";
 
 export default function Addinventory() {
   const [itemName, setitemName] = useState("");
@@ -74,6 +75,14 @@ export default function Addinventory() {
     setErrors(errors);
 
     //make axios post request with these values
+    useEffect(() => {
+      axios
+        .post("http://localhost:8080/api/inventories")
+        .then(() => {})
+        .catch((response) => {
+          console.log(response);
+        });
+    }, []);
   }
 
   return (

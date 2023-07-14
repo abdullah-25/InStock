@@ -2,6 +2,7 @@ import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
 import { useState } from "react";
 import "./NewWarehouse.scss";
+import axios from "axios";
 
 export default function NewWarehouse() {
   const [warehouseName, setwarehouseName] = useState("");
@@ -42,20 +43,8 @@ export default function NewWarehouse() {
     checkPhoneNumber(ContactPhone);
   }
 
-  // if (error) {
-  //   return <>Error!!!!</>;
-  // }
   function SubmitDetails(e) {
     e.preventDefault();
-    // const warehouseName = e.target.warehouseName.value;
-    // const warehouseAddress = e.target.warehouseAddress.value;
-    // const warehouseCountry = e.target.warehouseCountry.value;
-    // const warehouseCity = e.target.warehouseCity.value;
-    // const ContactName = e.target.contactName.value;
-    // const ContactPosition = e.target.contactPosition.value;
-    // const ContactPhone = e.target.contactPhone.value;
-
-    // const ContactEmail = e.target.contactEmail.value;
 
     const errors = {};
 
@@ -87,19 +76,6 @@ export default function NewWarehouse() {
     }
 
     setErrors(errors);
-
-    // if (
-    //   !warehouseName ||
-    //   !warehouseAddress ||
-    //   !warehouseCountry ||
-    //   !warehouseCity ||
-    //   !ContactName ||
-    //   !ContactPosition ||
-    //   !ContactPhone ||
-    //   !ContactEmail
-    // ) {
-    //   alert("error");
-    // }
 
     //make axios post request with these values
   }

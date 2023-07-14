@@ -3,6 +3,7 @@ import error from "../../assets/icons/error-24px.svg";
 import { useState, useEffect } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "./EditInventory.scss";
+import axios from "axios";
 
 export default function EditInventory({
   item_name,
@@ -83,7 +84,7 @@ export default function EditInventory({
 
     useEffect(() => {
       axios
-        .post("http://localhost:8080/api/inventories")
+        .put("http://localhost:8080/api/inventories")
         .then(() => {})
         .catch((response) => {
           console.log(response);

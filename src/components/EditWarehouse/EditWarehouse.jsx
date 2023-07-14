@@ -3,6 +3,7 @@ import error from "../../assets/icons/error-24px.svg";
 import { useState, useEffect } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "./EditWarehouse.scss";
+import axios from "axios";
 
 export default function EditWarehouse({
   warehouse_name,
@@ -87,7 +88,7 @@ export default function EditWarehouse({
 
     useEffect(() => {
       axios
-        .post("http://localhost:8080/api/warehouse")
+        .put("http://localhost:8080/api/warehouse")
         .then(() => {})
         .catch((response) => {
           console.log(response);
