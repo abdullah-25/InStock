@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import EditInventory from "./components/EditInventory/EditInventory";
-import AddInventory from "./components/AddInventory/Addinventory";
+import AddInventory from "./components/AddInventory/AddInventory";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
@@ -19,8 +19,6 @@ import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 import ItemDetails from "./components/ItemDetails/ItemDetails";
 
 
-// import InventoryList from "./components/InventoryList/InventoryList";
-// import ItemDetails from "./components/ItemDetails/ItemDetails";
 
 
 
@@ -29,24 +27,27 @@ function App() {
 
 
   return (
-    <>
+    <BrowserRouter>
       <Header />
       <Routes >
+            
         <Route path="/" element={<Warehouses />} />
         <Route path="/:id" element={<WarehouseDetails />} />
-        {/* <Route path="/edit/:id" element={<EditWarehouses />}/>  */}
-        {/* <Route path="/new" element={<AddNewWarehouse />}/> */}
+        <Route path="/edit/:id" element={<EditWarehouses />}/> 
+        <Route path="/new" element={<AddNewWarehouse />}/>
         <Route path="/inventory" element={<Inventory />}/>
         {/* <Route path="/inventory/:id" element={<InventoryItemDetails/>}/> */}
         {/* <Route path="/inventory/edit/:id" element={<EditInventoryItem />}/> */}
-        {/* <Route path="/inventory/add/" element={<AddNewInventoryItem />}/> */}
+        <Route path="/inventory/add/" element={<AddNewInventoryItem />}/>
         {/* <Route path="/delete/" element={<Delete />}/> */}
+        
 
       </Routes>
 
 
       <Footer />
-    </>
+      </BrowserRouter>
+   
   );
 }
 
