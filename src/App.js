@@ -62,13 +62,13 @@ function App() {
          <Route path="/" element={<Warehouses />} />
 
 
-        {/* <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} /> */}
+        {/* <Route path="/inventory" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} /> */}
 
 
         {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
 
 
-
+  {/* <InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}></InventoryList> */}
       </Routes>
       <Footer />
     </BrowserRouter>

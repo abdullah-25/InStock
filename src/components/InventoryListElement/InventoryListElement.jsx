@@ -1,7 +1,19 @@
 import "../InventoryListElement/InventoryListElement.scss"
-
-function InventoryListElement({ item_name,category,status,quantity,warehouseName}) {
-
+import axios from "axios";
+import { useState } from "react";
+import { Modal } from "@mui/material";
+function InventoryListElement({id,item_name,category,status,quantity,warehouseName,inventoryArray,setInventoryArray}) {
+    function handleDelete() {
+        axios.delete(`http://localhost:8080/api/inventories/${id}`).then(() => {
+          axios.get(`http://localhost:8080/api/inventories`).then((response) => {
+            setInventoryArray(response.data);
+            handleClose();
+          });
+        });
+      }
+      const [open, setOpen] = useState(false);
+      const handleOpen = () => setOpen(true);
+      const handleClose = () => setOpen(false);
     return (
         <li className="inventorylist__element">
                 <div className="table-cell table-cell--first">
@@ -29,7 +41,26 @@ function InventoryListElement({ item_name,category,status,quantity,warehouseName
                 </div>
                 <div className="icon-container">
                 <div className="table-cell">
-                <button className="icon-delete" ></button>
+                <button className="icon-delete" onClick={handleOpen} ></button>
+                <Modal open={open} onClose={handleClose} className="modal">
+            <div className="modal-div">
+              <h1 className="modal__title">Delete {item_name} inventory item?</h1>
+              <p className="modal__text">
+                Please confirm that you’d like to delete the {item_name} from the
+               inventory list. You won’t be able to undo this action.
+              </p>
+              <div className="button-style">
+                <div className="modal-button__div">
+                  <button className="modal-cancel" onClick={handleClose}>
+                    Cancel
+                  </button>
+                  <button className="modal-delete" onClick={handleDelete}>
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Modal>
                 </div>
                 <div className="table-cell table-cell--right">
                     <button className="icon-edit" ></button>

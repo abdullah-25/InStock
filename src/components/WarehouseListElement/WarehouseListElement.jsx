@@ -11,15 +11,15 @@ function WarehouseListElement({
   contactPhone,
   contactEmail,
   warehouseArray,
-  setWarehouseArray
+  setWarehouseArray,
 }) {
-  function handleDelete(){
-   axios.delete(`http://localhost:8080/api/warehouses/${id}`)
-   .then(()=>{
-    axios.get(`http://localhost:8080/api/warehouses`)
-    .then((response)=>{setWarehouseArray(response.data)
-      handleClose()})
-    })
+  function handleDelete() {
+    axios.delete(`http://localhost:8080/api/warehouses/${id}`).then(() => {
+      axios.get(`http://localhost:8080/api/warehouses`).then((response) => {
+        setWarehouseArray(response.data);
+        handleClose();
+      });
+    });
   }
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -53,15 +53,18 @@ function WarehouseListElement({
             <div className="modal-div">
               <h1 className="modal__title">Delete {city} warehouse?</h1>
               <p className="modal__text">
-                Please confirm 
-                that you’d like to delete the {city} from the
+                Please confirm that you’d like to delete the {city} from the
                 list of warehouses. You won’t be able to undo this action.
               </p>
               <div className="button-style">
-              <div className="modal-button__div">
-              <button className="modal-cancel" onClick={handleClose}>Cancel</button>
-              <button className="modal-delete"onClick={handleDelete}>Delete</button>
-              </div>
+                <div className="modal-button__div">
+                  <button className="modal-cancel" onClick={handleClose}>
+                    Cancel
+                  </button>
+                  <button className="modal-delete" onClick={handleDelete}>
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </Modal>
