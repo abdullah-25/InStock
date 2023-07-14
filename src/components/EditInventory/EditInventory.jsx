@@ -81,7 +81,14 @@ export default function EditInventory({
 
     setErrors(errors);
 
-    //make axios post request with these values
+    useEffect(() => {
+      axios
+        .post("http://localhost:8080/api/inventories")
+        .then(() => {})
+        .catch((response) => {
+          console.log(response);
+        });
+    }, []);
   }
 
   return (
