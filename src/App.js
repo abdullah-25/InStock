@@ -1,13 +1,16 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import EditInventory from "./components/EditInventory/EditInventory";
+import AddInventory from "./components/AddInventory/Addinventory";
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails.jsx";
+// import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails.jsx";
 
-import Warehouses from "./pages/Warehouses/Warehouses";
-import WarehouseList from "./components/WarehouseList/WarehouseList";
+// import Warehouses from "./pages/Warehouses/Warehouses";
+// import WarehouseList from "./components/WarehouseList/WarehouseList";
+
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -17,6 +20,11 @@ import InventoryList from "./components/InventoryList/InventoryList";
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
 import ItemDetails from "./components/ItemDetails/ItemDetails";
+
+
+// import InventoryList from "./components/InventoryList/InventoryList";
+// import ItemDetails from "./components/ItemDetails/ItemDetails";
+
 
 
 
@@ -36,9 +44,14 @@ function App() {
   //   return <> Loading...</>;
   // }
 
+
   return (
-    <BrowserRouter>
+    <>
       <Header />
+
+      <EditInventory />
+      {/* <AddInventory /> */}
+
       <NewWarehouse />
 
 
@@ -97,8 +110,9 @@ function App() {
 
       </Routes>
 
+
       <Footer />
-    </BrowserRouter>
+    </>
   );
 }
 
