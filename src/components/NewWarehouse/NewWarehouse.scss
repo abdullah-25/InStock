@@ -68,6 +68,10 @@
         border: 1px solid #bdc5d5;
         margin-bottom: 1rem;
         padding-left: 1rem;
+
+        &--invalid {
+          border: 1px solid red;
+        }
       }
       &--hr {
         border: 1px solid $divider;
@@ -121,6 +125,7 @@
       margin-right: 2rem;
       margin-top: 2rem;
       margin-bottom: 2rem;
+      cursor: pointer;
       @include tablet {
         padding: 8px 16px 8px 16px;
       }
@@ -133,6 +138,7 @@
       border-radius: 20px;
       margin-top: 2rem;
       margin-bottom: 2rem;
+      cursor: pointer;
       @include tablet {
         margin-right: 2rem;
       }
@@ -141,4 +147,12 @@
 }
 .outerdiv {
   background-color: #f7f8f9;
+}
+.error {
+  display: flex;
+  color: red;
+
+  &--text {
+    padding-left: 0.5rem;
+  }
 }

@@ -1,9 +1,17 @@
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
 import { useState } from "react";
-import "./NewWarehouse.scss";
+import "../../components/NewWarehouse/NewWarehouse.scss";
 
-export default function NewWarehouse() {
+export default function EditWarehouse({
+  warehouse_name,
+  address,
+  city,
+  contact_name,
+  contact_email,
+  contact_phone,
+  contact_position,
+}) {
   const [warehouseName, setwarehouseName] = useState("");
   const [warehouseAddress, setwarehouseAddress] = useState("");
   const [warehouseCountry, setwarehouseCountry] = useState("");
@@ -42,20 +50,8 @@ export default function NewWarehouse() {
     checkPhoneNumber(ContactPhone);
   }
 
-  // if (error) {
-  //   return <>Error!!!!</>;
-  // }
   function SubmitDetails(e) {
     e.preventDefault();
-    // const warehouseName = e.target.warehouseName.value;
-    // const warehouseAddress = e.target.warehouseAddress.value;
-    // const warehouseCountry = e.target.warehouseCountry.value;
-    // const warehouseCity = e.target.warehouseCity.value;
-    // const ContactName = e.target.contactName.value;
-    // const ContactPosition = e.target.contactPosition.value;
-    // const ContactPhone = e.target.contactPhone.value;
-
-    // const ContactEmail = e.target.contactEmail.value;
 
     const errors = {};
 
@@ -126,7 +122,7 @@ export default function NewWarehouse() {
       <div className="container">
         <div className="container__heading">
           <img src={arrowBack} className="container__heading--arrow" />
-          <h1>Add a New Warehouse</h1>
+          <h1>Edit Warehouse</h1>
         </div>
         <div className="container__hr"></div>
         <form onSubmit={SubmitDetails}>
@@ -144,7 +140,7 @@ export default function NewWarehouse() {
                     ? "container__form__warehouse--input--invalid"
                     : ""
                 }`}
-                placeholder="Warehouse Name"
+                placeholder={warehouse_name}
                 name="warehouseName"
                 onChange={handleChangeWareHouseName}
               ></input>
@@ -164,7 +160,7 @@ export default function NewWarehouse() {
                     ? "container__form__warehouse--input--invalid"
                     : ""
                 }`}
-                placeholder="Address"
+                placeholder={address}
                 name="warehouseAddress"
                 onChange={handleChangeWareHouseAddress}
               ></input>
@@ -185,7 +181,7 @@ export default function NewWarehouse() {
                     : ""
                 }`}
                 name="warehouseCity"
-                placeholder="City"
+                placeholder={city}
                 onChange={handleChangeWareHouseCity}
               ></input>
               {errors.warehouseCity && (
@@ -230,8 +226,7 @@ export default function NewWarehouse() {
                     : ""
                 }`}
                 name="contactName"
-                autocomplete="name"
-                placeholder="Name"
+                placeholder={contact_name}
                 onChange={handleChangeContactName}
               ></input>
               {errors.ContactName && (
@@ -249,7 +244,7 @@ export default function NewWarehouse() {
                     : ""
                 }`}
                 name="contactPosition"
-                placeholder="Position"
+                placeholder={contact_position}
                 onChange={handleChangeContactPosition}
               ></input>
               {errors.ContactPosition && (
@@ -267,7 +262,7 @@ export default function NewWarehouse() {
                     : ""
                 }`}
                 name="contactPhone"
-                placeholder="Phone Number"
+                placeholder={contact_phone}
                 onClick={handleChangeContactPhone}
               ></input>
               {errors.ContactPhone && (
@@ -285,7 +280,7 @@ export default function NewWarehouse() {
                     : ""
                 }`}
                 name="contactEmail"
-                placeholder="Email"
+                placeholder={contact_email}
                 onClick={handleChangeContactEmail}
               ></input>
               {errors.ContactEmail && (
@@ -298,7 +293,7 @@ export default function NewWarehouse() {
           </div>
           <div className="container__btndiv">
             <button className="container__btndiv--cancel">Cancel</button>
-            <button className="container__btndiv--add">+ Add Warehouse</button>
+            <button className="container__btndiv--add">Save</button>
           </div>
         </form>
       </div>
