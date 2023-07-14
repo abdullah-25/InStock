@@ -1,7 +1,7 @@
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import "./EditInventory.scss";
+import "./AddInventory.scss";
 
-function EditInventory(){
+function AddInventory(){
     // function SubmitInventory(e){
 
     // }
@@ -10,7 +10,7 @@ function EditInventory(){
         <div className="card">
             <div className="card__heading">
                 <img src={arrowBack} className="card__heading-arrow"/>
-                <h1>Edit Inventory Item</h1>
+                <h1>Add New Inventory Item</h1>
             </div>
             <div className="card__hr"></div>
          {/* add submit handler */}
@@ -33,8 +33,8 @@ function EditInventory(){
                         <div className="label-text">Description</div>
                         <input
                             type="text"
-                            className="card__form__inventory-input card__form__inventory-input--descr"
-                            placeholder="Please enter a brief item description..."
+                            className="card__form__inventory-input"
+                            placeholder="Inventory Item Name"
                             name="inventoryName"
                             // autocomplete="name"
                             // enterkeyhint="next"
@@ -77,6 +77,16 @@ function EditInventory(){
                             required 
                         />
                         <label for="status">Out of stock</label>
+                        <div className="label-text">Quantity</div>
+                        <input
+                            type="number"
+                            className="card__form__inventory-input"
+                            placeholder="0"
+                            name="inventoryName"
+                            // autocomplete="name"
+                            // enterkeyhint="next"
+                            required 
+                        />
                         <div className="label-text">Warehouse</div>
                         <select
                             type="text"
@@ -95,7 +105,7 @@ function EditInventory(){
                 </div>
                 <div className="card__buttons">
                     <button className="card__buttons-cancel">Cancel</button>
-                    <button className="card__buttons-save">Save</button>
+                    <button className="card__buttons-save">+ Add Item</button>
                 </div>
             </form>
         </div>
@@ -103,4 +113,4 @@ function EditInventory(){
     );
 }
 
-export default EditInventory;
+export default AddInventory;

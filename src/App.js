@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import EditInventory from "./components/EditInventory/EditInventory";
+import AddInventory from "./components/AddInventory/Addinventory";
 
 // import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -36,6 +37,7 @@ function App() {
     <>
       <Header />
       <EditInventory />
+      {/* <AddInventory /> */}
       <Footer />
     </>
   );
