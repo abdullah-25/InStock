@@ -2,6 +2,13 @@
 @use "/src/styles/colors.scss" as *;
 
 
+@use "/src/styles/partials.scss" as *;
+@use "/src/styles/colors.scss" as *;
+
+.component-container{
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
 
 .inventorylist{
     list-style-type: none;
@@ -27,6 +34,9 @@
             &--end{
                 width:20%;
                 text-align:right;
+            }
+            &--empty{
+                display:none;
             }
         }
     }

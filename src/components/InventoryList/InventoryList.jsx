@@ -1,9 +1,8 @@
 import "../InventoryList/InventoryList.scss"
 import InventoryListElement from "../InventoryListElement/InventoryListElement.jsx"
-function InventoryList({inventoryArray, setInventoryArray}) {
+function InventoryList({inventoryArray, warehouseName}) {
     return (
         <>
-            
             <ul className="inventorylist">
                 <ul className="inventorylist__labels">
                    <li className="list-label label-text">
@@ -22,10 +21,10 @@ function InventoryList({inventoryArray, setInventoryArray}) {
                   
                     </li>
                    <li className="list-label label-text">
-                    QTY
+                    QUANTITY
                     <button className="sort-up" ></button>
                     </li>
-                    <li className="list-label label-text">
+                    <li className={`list-label label-text ${warehouseName && "list-label--empty"}`}>
                     WAREHOUSE
                     <button className="sort-up" ></button>
                     </li>
@@ -33,7 +32,9 @@ function InventoryList({inventoryArray, setInventoryArray}) {
                     ACTIONS
                     </li>
                 </ul>
-               { inventoryArray.map((item) => <InventoryListElement key={item.id} item={item.item_name} category={item.category} status={item.status} quantity={item.quantity} warehouse={item.warehouse_name} />)}
+               { inventoryArray.map((item) => 
+               
+               <InventoryListElement key={item.id} {...item} displayWarehouseName={!!warehouseName}/>)}
             </ul>
         </>
     );
