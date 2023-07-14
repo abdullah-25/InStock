@@ -16,6 +16,7 @@ import axios from "axios";
 
 import InventoryList from "./components/InventoryList/InventoryList";
 
+
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
 import ItemDetails from "./components/ItemDetails/ItemDetails";
@@ -24,25 +25,10 @@ import ItemDetails from "./components/ItemDetails/ItemDetails";
 // import ItemDetails from "./components/ItemDetails/ItemDetails";
 
 function App() {
-  // const [inventoryArray, setInventoryArray] = useState(undefined);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8080/api/inventories")
-  //     .then((response) => {
-  //       setInventoryArray(response.data[0]);
-  //     })
-  //     .catch((response) => {
-  //       console.log(response);
-  //     });
-  // }, []);
-  // if (!inventoryArray) {
-  //   return <> Loading...</>;
-  // }
 
   return (
     <>
       <Header />
-
       <EditInventory />
       <AddInventory />
       <Footer />
