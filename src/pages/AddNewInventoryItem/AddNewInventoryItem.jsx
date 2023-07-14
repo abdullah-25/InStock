@@ -1,4 +1,4 @@
-import AddInventory from "../../components/AddInventory/AddInventory";
+import AddInventory from "../../components/AddInventory/Addinventory";
 import "../PagePositioning.scss"
 function AddNewInventoryItem(){
     return (

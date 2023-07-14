@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "../EditInventory/EditInventory.scss";
 
-export default function AddInventory() {
+export default function Addinventory() {
   const [itemName, setitemName] = useState("");
   const [Category, setCategory] = useState("");
   const [Status, setStatus] = useState("");
