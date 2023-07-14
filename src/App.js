@@ -11,9 +11,8 @@ import Inventory from "./pages/Inventory/Inventory";
 import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
 import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import EditWarehouses from "./pages/EditWarehouses/EditWarehouses";
+import Delete from "./components/Delete/Delete"
 
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 
 function App() {
@@ -31,6 +30,7 @@ function App() {
         <Route path="/inventory/:id" element={<InventoryItemDetails/>}/>
         <Route path="/inventory/edit/:id" element={<EditInventoryItem />}/>
         <Route path="/inventory/add/" element={<AddNewInventoryItem />}/>
+        {/* <Route path="/delete/" element={<Delete />}/> */}
 
       </Routes>
       <Footer />
