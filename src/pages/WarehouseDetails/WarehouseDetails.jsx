@@ -1,7 +1,5 @@
 import "../PagePositioning.scss"
 import WarehouseDetailsDisplay from "../../components/WarehouseDetailsDisplay/WarehouseDetailsDisplay";
-import "../WarehouseDetails/WarehouseDetails.scss"
-import "../PagePositioning.scss"
 
 import InventoryList from "../../components/InventoryList/InventoryList";
 import { useParams } from "react-router-dom";
