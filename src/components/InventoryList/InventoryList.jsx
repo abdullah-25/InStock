@@ -1,6 +1,6 @@
 import "../InventoryList/InventoryList.scss"
 import InventoryListElement from "../InventoryListElement/InventoryListElement.jsx"
-function InventoryList({inventoryArray, warehouseName}) {
+function InventoryList({inventoryArray, displayWarehouseName}) {
     return (
         <>
             <ul className="inventorylist">
@@ -24,7 +24,7 @@ function InventoryList({inventoryArray, warehouseName}) {
                     QUANTITY
                     <button className="sort-up" ></button>
                     </li>
-                    <li className={`list-label label-text ${warehouseName && "list-label--empty"}`}>
+                    <li className={`list-label label-text ${!displayWarehouseName && "list-label--empty"}`}>
                     WAREHOUSE
                     <button className="sort-up" ></button>
                     </li>
@@ -34,7 +34,7 @@ function InventoryList({inventoryArray, warehouseName}) {
                 </ul>
                { inventoryArray.map((item) => 
                
-               <InventoryListElement key={item.id} {...item} displayWarehouseName={!!warehouseName}/>)}
+               <InventoryListElement key={item.id} {...item} displayWarehouseName={displayWarehouseName}/>)}
             </ul>
         </>
     );

@@ -24,7 +24,7 @@ function Inventory(){
     return (
         <div className="positioning">
             <InventoryForm />
-            <InventoryList inventoryArray={inventoryArray}/>
+            <InventoryList inventoryArray={inventoryArray} displayWarehouseName={true}/>
         </div>
     )
 }

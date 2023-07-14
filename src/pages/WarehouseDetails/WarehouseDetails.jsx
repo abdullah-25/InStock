@@ -32,7 +32,7 @@ function WarehouseDetails(props) {
         <>
         <div className="positioning">
                     <WarehouseDetailsDisplay {...warehouse} />
-                    <InventoryList inventoryArray={inventory}/>
+                    <InventoryList inventoryArray={inventory} displayWarehouseName={false}/>
         </div>
         </>
     )
