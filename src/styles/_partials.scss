@@ -142,9 +142,16 @@ h2 {
   @include tablet {
     font-size: 0.875rem;
 
-      line-height: 1.375rem;
+    line-height: 1.375rem;
 
-      font-family: TitilliumWeb;
-      font-weight: 600;
+    font-family: TitilliumWeb;
+    font-weight: 600;
   }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
 }

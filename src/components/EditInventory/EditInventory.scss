@@ -2,124 +2,52 @@
 @use "../../styles/partials" as *;
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.card{
-  
-    &__heading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      @include tablet {
-        display: inline-flex;
-        padding-left: 2rem;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-      &-arrow {
-        padding-right: 0.5rem;
-      }
-    }
-  
-    &__form {
-      padding-top: 1rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-  
-      @include tablet {
-        display: flex;
-        flex: 1;
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
-  
-      &__inventory {
-        @include tablet {
-          width: 50%;
-        }
-        &-title {
-          padding-bottom: 1.5rem;
-        }
-        &-input {
-          width: 100%;
-          height: 36px;
-          border-radius: 20px;
-          background: linear-gradient(0deg, #ffffff, #ffffff);
-          border: 1px solid #bdc5d5;
-          margin-bottom: 1rem;
-          padding-left: 1rem;
-        }
-        &-hr {
-          border: 1px solid $divider;
-          margin-left: -1rem;
-          margin-right: -1rem;
-  
-          @include tablet {
-            display: none;
-          }
-        }
-      }
-  
-      &__availabilty {
-        @include tablet {
-          width: 50%;
-        }
-        &-title {
-          padding-top: 1rem;
-          padding-bottom: 1.5rem;
-          @include tablet {
-            padding-top: 0;
-          }
-        }
-        &-verticalline {
-          border-left: 1px solid $divider;
-          margin-left: 2rem;
-          margin-right: 2rem;
-        }
-      }
-    }
-  
-    &__hr {
-      border: 1px solid $divider;
-    }
-    &__buttons {
-      height: 100%;
-      margin-top: 1rem;
-  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f7f8f9;
-      @include tablet {
-        justify-content: flex-end;
-      }
-      &-cancel {
-        background: White;
-        padding: 8px 21px 8px 21px;
-        border-radius: 20px;
-        border: 1px solid grey;
-        margin-right: 2rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        @include tablet {
-          padding: 8px 16px 8px 16px;
-        }
-      }
-      &-save {
-        background: #2e66e5;
-        color: white;
-        border-style: none;
-        padding: 8px 21px 8px 21px;
-        border-radius: 20px;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        @include tablet {
-          margin-right: 2rem;
-        }
-      }
-    }
+
+.description {
+  width: 100%;
+  height: 120px;
+  border-radius: 20px;
+  background: linear-gradient(0deg, #ffffff, #ffffff);
+  border: 1px solid #bdc5d5;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+
+  &--invalid {
+    border: 1px solid red;
   }
- 
+}
+
+.radiobtns-outer {
+  display: flex;
+  padding-bottom: 1rem;
+  &--radio {
+    padding-right: 3rem;
+  }
+}
+
+.savebtn {
+  background: #2e66e5;
+  color: white;
+  border-style: none;
+  padding: 8px 51px 8px 51px;
+  border-radius: 20px;
+  border: 1px solid grey;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  @include tablet {
+    padding: 8px 16px 8px 16px;
+  }
+}
+
+.dropdown {
+  background-image: url(../../assets/icons/arrow_drop_down-24px.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+

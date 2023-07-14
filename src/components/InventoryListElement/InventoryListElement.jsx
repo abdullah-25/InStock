@@ -1,7 +1,7 @@
-import "../InventoryListElement/InventoryListElement.scss"
+import "../InventoryListElement/InventoryListElement.scss";
 
 
-function InventoryListElement({ item_name,category,status,quantity,warehouse_name, displayWarehouseName}) {
+function InventoryListElement({ item_name,category,status,quantity,warehouse_name,description, displayWarehouseName}) {
    
 
     return (

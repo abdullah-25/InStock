@@ -2,6 +2,7 @@ import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
 import { useState } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
+import "./EditWarehouse.scss";
 
 export default function EditWarehouse({
   warehouse_name,
