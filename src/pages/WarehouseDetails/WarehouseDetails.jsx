@@ -15,7 +15,7 @@ function WarehouseDetails(props) {
         }).catch(response => {
             console.log(response);
         })
-        axios.get(`http://localhost:8080/api/inventories/${warehouseID.id}`).then(response => {
+        axios.get(`http://localhost:8080/api/warehouses/${warehouseID.id}/inventories`).then(response => {
             setInventory(response.data);
         }).catch(response => {
             console.log(response);
