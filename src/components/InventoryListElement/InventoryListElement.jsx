@@ -1,6 +1,8 @@
 import "../InventoryListElement/InventoryListElement.scss"
 
-function InventoryListElement({ item_name,category,status,quantity,warehouseName}) {
+
+function InventoryListElement({ item_name,category,status,quantity,warehouse_name, displayWarehouseName}) {
+   
 
     return (
         <li className="inventorylist__element">
@@ -23,9 +25,11 @@ function InventoryListElement({ item_name,category,status,quantity,warehouseName
                 <div className="table-cell table-cell--empty">
                     {/* This cell left intentionally blank */}
                 </div>
-                <div className={`table-cell ${!warehouseName && "table-cell--empty"}`}>
-                    <p className="label-text inventorylist__title">{warehouseName && "WAREHOUSE"}</p>
-                    <p className="body-medium warehouselist__content">{warehouseName}</p>
+
+                <div className={`table-cell ${!displayWarehouseName && "table-cell--empty"}`}>
+                    <p className="label-text inventorylist__title">{!displayWarehouseName && "WAREHOUSE"}</p>
+                    <p className="body-medium warehouselist__content">{warehouse_name}</p>
+
                 </div>
                 <div className="icon-container">
                 <div className="table-cell">

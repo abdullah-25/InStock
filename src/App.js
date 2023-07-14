@@ -4,18 +4,15 @@ import Footer from "./components/Footer/Footer";
 import EditInventory from "./components/EditInventory/EditInventory";
 import AddInventory from "./components/AddInventory/Addinventory";
 
-// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-// import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails.jsx";
-
-// import Warehouses from "./pages/Warehouses/Warehouses";
-// import WarehouseList from "./components/WarehouseList/WarehouseList";
-
-
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-import InventoryList from "./components/InventoryList/InventoryList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Warehouses from "./pages/Warehouses/Warehouses";
+import AddNewInventoryItem from "./pages/AddNewInventoryItem/AddNewInventoryItem";
+import AddNewWarehouse from "./pages/AddNewWarehouse/AddNewWarehouse";
+import EditInventoryItem from "./pages/EditInventoryItem/EditInventoryItem";
+import Inventory from "./pages/Inventory/Inventory";
+import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
+import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
+import EditWarehouses from "./pages/EditWarehouses/EditWarehouses";
 
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
@@ -29,84 +26,20 @@ import ItemDetails from "./components/ItemDetails/ItemDetails";
 
 
 function App() {
-  // const [inventoryArray, setInventoryArray] = useState(undefined);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8080/api/inventories")
-  //     .then((response) => {
-  //       setInventoryArray(response.data[0]);
-  //     })
-  //     .catch((response) => {
-  //       console.log(response);
-  //     });
-  // }, []);
-  // if (!inventoryArray) {
-  //   return <> Loading...</>;
-  // }
 
 
   return (
     <>
       <Header />
-
-      <EditInventory />
-      {/* <AddInventory /> */}
-
-      <NewWarehouse />
-
-
-      {/* <Link to={`/addwarehouse`} style={{ textDecoration: "none" }}>
-        <div>Add Warehouse</div>
-      </Link> */}
-
-      {/* <Routes> */}
-      {/* <Route path="/" element={<Warehouses />} /> */}
-
-      {/* <Route
-          path="/"
-          element={
-            <InventoryList
-              inventoryArray={inventoryArray}
-              setInventoryArray={setInventoryArray}
-            />
-          }
-        />
-        <Route path="/details/:id" element={<WarehouseDetails />} />
-
-        <Route
-          path="/"
-          element={
-            <WarehouseList
-              warehousearray={warehouseArray}
-              setWarehouseArray={setWarehouseArray}
-            />
-          }
-        /> */}
-      {/* </Routes> */}
-
-
-
-        <Route path="/" element={<ItemDetails item={{
-    id: 5,
-    warehouse_name: "Manhatten",
-    item_name: "Shampoo",
-    description: "Natural shampoo made from 99% biodegradable ingredients.",
-    category: "Health",
-    status: "In Stock",
-    quantity: 4350,
-    created_at: "2023-07-12T16:11:34.000Z",
-    updated_at: "2023-07-12T16:11:34.000Z"
-  }}/>} />
-
-         <Route path="/" element={<Warehouses />} />
-
-
-        {/* <Route path="/" element={<InventoryList inventoryArray={inventoryArray} setInventoryArray={setInventoryArray}/>} /> */}
-
-
-        {/* <Route path="/" element={<WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>} /> */}
-
-
+        <Route path="/" element={<Warehouses />} />
+        <Route path="/:id" element={<WarehouseDetails />} />
+        {/* <Route path="/edit/:id" element={<EditWarehouses />}/>  */}
+        {/* <Route path="/new" element={<AddNewWarehouse />}/> */}
+        <Route path="/inventory" element={<Inventory />}/>
+        {/* <Route path="/inventory/:id" element={<InventoryItemDetails/>}/> */}
+        {/* <Route path="/inventory/edit/:id" element={<EditInventoryItem />}/> */}
+        {/* <Route path="/inventory/add/" element={<AddNewInventoryItem />}/> */}
+        {/* <Route path="/delete/" element={<Delete />}/> */}
 
       </Routes>
 
