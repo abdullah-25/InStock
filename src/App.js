@@ -4,6 +4,17 @@ import Footer from "./components/Footer/Footer";
 import EditInventory from "./components/EditInventory/EditInventory";
 import AddInventory from "./components/AddInventory/AddInventory";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Warehouses from "./pages/Warehouses/Warehouses";
+import AddNewInventoryItem from "./pages/AddNewInventoryItem/AddNewInventoryItem";
+import AddNewWarehouse from "./pages/AddNewWarehouse/AddNewWarehouse";
+import EditInventoryItem from "./pages/EditInventoryItem/EditInventoryItem";
+import Inventory from "./pages/Inventory/Inventory";
+import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
+import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
+import EditWarehouses from "./pages/EditWarehouses/EditWarehouses";
+
+
 // import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 // import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails.jsx";
@@ -11,8 +22,10 @@ import AddInventory from "./components/AddInventory/AddInventory";
 // import Warehouses from "./pages/Warehouses/Warehouses";
 // import WarehouseList from "./components/WarehouseList/WarehouseList";
 
+
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 
 import InventoryList from "./components/InventoryList/InventoryList";
 
@@ -27,12 +40,15 @@ import ItemDetails from "./components/ItemDetails/ItemDetails";
 function App() {
 
   return (
-    <>
+    <BrowserRouter>
       <Header />
+
       <EditInventory />
       <AddInventory />
+
       <Footer />
-    </>
+      </BrowserRouter>
+   
   );
 }
 
