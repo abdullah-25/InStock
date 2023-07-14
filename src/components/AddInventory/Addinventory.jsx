@@ -75,14 +75,19 @@ export default function Addinventory() {
     setErrors(errors);
 
     //make axios post request with these values
-    useEffect(() => {
-      axios
-        .post("http://localhost:8080/api/inventories")
-        .then(() => {})
-        .catch((response) => {
-          console.log(response);
-        });
-    }, []);
+    axios
+      .post("http://localhost:8080/api/inventories", {
+        itemName,
+        Category,
+        Description,
+        Status,
+        Quantity,
+        Warehouse,
+      })
+      .then(() => {})
+      .catch((response) => {
+        console.log(response);
+      });
   }
 
   return (

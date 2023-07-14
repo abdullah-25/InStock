@@ -84,7 +84,14 @@ export default function EditInventory({
 
     useEffect(() => {
       axios
-        .put("http://localhost:8080/api/inventories")
+        .put("http://localhost:8080/api/inventories", {
+          itemName,
+          Category,
+          Description,
+          Status,
+          Quantity,
+          Warehouse,
+        })
         .then(() => {})
         .catch((response) => {
           console.log(response);

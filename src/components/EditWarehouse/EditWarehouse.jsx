@@ -85,15 +85,21 @@ export default function EditWarehouse({
     }
 
     setErrors(errors);
-
-    useEffect(() => {
-      axios
-        .put("http://localhost:8080/api/warehouse")
-        .then(() => {})
-        .catch((response) => {
-          console.log(response);
-        });
-    }, []);
+    axios
+      .put("http://localhost:8080/api/warehouse", {
+        warehouseName,
+        warehouseAddress,
+        warehouseCity,
+        warehouseCountry,
+        ContactPhone,
+        ContactEmail,
+        ContactName,
+        ContactPosition,
+      })
+      .then(() => {})
+      .catch((response) => {
+        console.log(response);
+      });
   }
   function checkPhoneNumber(ContactPhone) {
     let phoneno = /^\d{10}$/;
