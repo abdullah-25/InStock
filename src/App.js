@@ -31,6 +31,7 @@ function App() {
   return (
     <>
       <Header />
+      <Routes >
         <Route path="/" element={<Warehouses />} />
         <Route path="/:id" element={<WarehouseDetails />} />
         {/* <Route path="/edit/:id" element={<EditWarehouses />}/>  */}
