@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "./EditWarehouse.scss";
 import axios from "axios";
+import { useParams, Link } from "react-router-dom";
 
 export default function EditWarehouse({
+  warehousearray,
+  warehouseID,
   warehouse_name,
   address,
   city,
@@ -14,6 +17,7 @@ export default function EditWarehouse({
   contact_phone,
   contact_position,
 }) {
+  const { id } = useParams();
   const [warehouseName, setwarehouseName] = useState("");
   const [warehouseAddress, setwarehouseAddress] = useState("");
   const [warehouseCountry, setwarehouseCountry] = useState("");
@@ -45,7 +49,7 @@ export default function EditWarehouse({
   }
   function handleChangeContactEmail(e) {
     setContactEmail(e.target.value);
-    checkEmail(ContactEmail);
+    //checkEmail(ContactEmail);
   }
   function handleChangeContactPhone(e) {
     setContactPhone(e.target.value);
@@ -85,20 +89,30 @@ export default function EditWarehouse({
     }
 
     setErrors(errors);
+    console.log(
+      warehouseName,
+      warehouseAddress,
+      warehouseCountry,
+      warehouseCity,
+      ContactName,
+      ContactPosition,
+      ContactPhone,
+      ContactEmail
+    );
     axios
-      .put("http://localhost:8080/api/warehouse", {
+      .patch(`http://localhost:8080/api/warehouses/${id}`, {
         warehouseName,
         warehouseAddress,
-        warehouseCity,
         warehouseCountry,
-        ContactPhone,
-        ContactEmail,
+        warehouseCity,
         ContactName,
         ContactPosition,
+        ContactPhone,
+        ContactEmail,
       })
       .then(() => {})
-      .catch((response) => {
-        console.log(response);
+      .catch(({ response }) => {
+        console.log(`Error! ${response.data}`);
       });
   }
   function checkPhoneNumber(ContactPhone) {
@@ -121,6 +135,7 @@ export default function EditWarehouse({
 
   return (
     <div className="outerdiv">
+      {console.log(id)}
       <div className="container">
         <div className="container__heading">
           <img src={arrowBack} className="container__heading--arrow" />
@@ -294,7 +309,9 @@ export default function EditWarehouse({
             </div>
           </div>
           <div className="container__btndiv">
-            <button className="container__btndiv--cancel">Cancel</button>
+            <Link to={`/`} style={{ textDecoration: "none" }}>
+              <button className="container__btndiv--cancel">Cancel</button>
+            </Link>
             <button className="container__btndiv--add">Save</button>
           </div>
         </form>

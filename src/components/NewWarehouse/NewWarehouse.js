@@ -1,6 +1,7 @@
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./NewWarehouse.scss";
 import axios from "axios";
 
@@ -36,12 +37,12 @@ export default function NewWarehouse() {
   }
   function handleChangeContactEmail(e) {
     setContactEmail(e.target.value);
-    checkEmail(ContactEmail);
   }
+  //checkEmail(ContactEmail);
   function handleChangeContactPhone(e) {
     setContactPhone(e.target.value);
-    checkPhoneNumber(ContactPhone);
   }
+  //checkPhoneNumber(ContactPhone);
 
   function SubmitDetails(e) {
     e.preventDefault();
@@ -79,7 +80,7 @@ export default function NewWarehouse() {
 
     //make axios post request with these values
     axios
-      .post("http://localhost:8080/api/warehouse", {
+      .post("http://localhost:8080/api/warehouses", {
         warehouseName,
         warehouseAddress,
         warehouseCity,
@@ -95,11 +96,11 @@ export default function NewWarehouse() {
       });
   }
   function checkPhoneNumber(ContactPhone) {
-    let phoneno = /^\d{10}$/;
-    if (ContactPhone.match(phoneno)) {
+    const regex = /^\+\d{1}\s\(\d{3}\)\s\d{3}-\d{4}$/;
+    if (ContactPhone.match(regex)) {
       return true;
     } else {
-      alert("Enter Phone Number with the correct format");
+      alert("Enter Phone Number with the correct format: {+1 (123) 123-123}");
       return false;
     }
   }
@@ -111,12 +112,15 @@ export default function NewWarehouse() {
       return true;
     } else return false;
   }
+  function validateform() {}
 
   return (
     <div className="outerdiv">
       <div className="container">
         <div className="container__heading">
-          <img src={arrowBack} className="container__heading--arrow" />
+          <Link to={`/`} style={{ textDecoration: "none" }}>
+            <img src={arrowBack} className="container__heading--arrow" />
+          </Link>
           <h1>Add a New Warehouse</h1>
         </div>
         <div className="container__hr"></div>
@@ -288,7 +292,9 @@ export default function NewWarehouse() {
             </div>
           </div>
           <div className="container__btndiv">
-            <button className="container__btndiv--cancel">Cancel</button>
+            <Link to={`/`} style={{ textDecoration: "none" }}>
+              <button className="container__btndiv--cancel">Cancel</button>
+            </Link>
             <button className="container__btndiv--add">+ Add Warehouse</button>
           </div>
         </form>
