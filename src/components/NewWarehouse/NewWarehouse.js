@@ -116,7 +116,7 @@ export default function NewWarehouse() {
     <div className="outerdiv">
       <div className="container">
         <div className="container__heading">
-          <img src={arrowBack} className="container__heading--arrow" />
+        <button className="back-button" onClick={() => {window.history.back()}}></button>
           <h1>Add a New Warehouse</h1>
         </div>
         <div className="container__hr"></div>
@@ -288,7 +288,7 @@ export default function NewWarehouse() {
             </div>
           </div>
           <div className="container__btndiv">
-            <button className="container__btndiv--cancel">Cancel</button>
+            <button className="container__btndiv--cancel" onClick={() => {window.history.back()}} >Cancel</button>
             <button className="container__btndiv--add">+ Add Warehouse</button>
           </div>
         </form>

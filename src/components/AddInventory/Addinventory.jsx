@@ -1,8 +1,8 @@
-import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
 import { useState, useEffect } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "../EditInventory/EditInventory.scss";
+import "../AddInventory/AddInventory.scss";
 import axios from "axios";
 
 export default function Addinventory() {
@@ -94,7 +94,7 @@ export default function Addinventory() {
     <div className="outerdiv">
       <div className="container">
         <div className="container__heading">
-          <img src={arrowBack} className="container__heading--arrow" />
+        <button className="back-button" onClick={() => {window.history.back()}}></button>
           <h1>Add New Inventory Item</h1>
         </div>
         <div className="container__hr"></div>
@@ -265,7 +265,7 @@ export default function Addinventory() {
             </div>
           </div>
           <div className="container__btndiv">
-            <button className="container__btndiv--cancel">Cancel</button>
+            <button className="container__btndiv--cancel"  onClick={() => {window.history.back()}}>Cancel</button>
             <button className="container__btndiv--add">+ Add Item</button>
           </div>
         </form>

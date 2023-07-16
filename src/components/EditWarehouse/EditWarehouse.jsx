@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "./EditWarehouse.scss";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 export default function EditWarehouse({
   warehouse_name,
   address,
@@ -123,7 +123,9 @@ export default function EditWarehouse({
     <div className="outerdiv">
       <div className="container">
         <div className="container__heading">
-          <img src={arrowBack} className="container__heading--arrow" />
+        
+            <button className="detailheader__back" onClick={()=>{window.history.back()}}></button>
+        
           <h1>Edit Warehouse</h1>
         </div>
         <div className="container__hr"></div>

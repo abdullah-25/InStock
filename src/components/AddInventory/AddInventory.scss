@@ -4,7 +4,16 @@
 * {
     box-sizing: border-box;
 }
-
+.back-button{
+  background-color: rgba(black, 0);
+  background-image: url("../../assets/icons/arrow_back-24px.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  width:24px;
+  height:24px;
+  outline:none;
+  border:none;
+}
 .card{
     &__heading {
       display: flex;
@@ -17,9 +26,6 @@
         padding-left: 2rem;
         padding-top: 2rem;
         padding-bottom: 2rem;
-      }
-      &-arrow {
-        padding-right: 0.5rem;
       }
     }
   
