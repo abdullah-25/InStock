@@ -1,8 +1,7 @@
 import "../InventoryListElement/InventoryListElement.scss";
+import {Link} from "react-router-dom"
 
-
-function InventoryListElement({ item_name,category,status,quantity,warehouse_name,description, displayWarehouseName}) {
-   
+function InventoryListElement({ id, item_name,category,status,quantity,warehouse_name,description, displayWarehouseName }) {
 
     return (
         <li className="inventorylist__element">
@@ -36,7 +35,9 @@ function InventoryListElement({ item_name,category,status,quantity,warehouse_nam
                 <button className="icon-delete" ></button>
                 </div>
                 <div className="table-cell table-cell--right">
+                    <Link to ={`/inventory/edit/${id}`}>
                     <button className="icon-edit" ></button>
+                    </Link>
                 </div>
                 </div>
             
