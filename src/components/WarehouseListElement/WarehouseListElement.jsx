@@ -15,12 +15,9 @@ function WarehouseListElement({
 }) {
   function handleDelete(){
    axios.delete(`http://localhost:8080/api/warehouses/${id}`)
-   .then(()=>{
-    axios.get(`http://localhost:8080/api/warehouses`)
-    .then((response)=>{setWarehouseArray(response.data)
-      handleClose()})
-    })
-  }
+  
+      handleClose()
+    }
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
