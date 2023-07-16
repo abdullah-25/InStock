@@ -2,6 +2,7 @@ import "../WarehouseListElement/WarehouseListElement.scss";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function WarehouseListElement({
   id,
   name,
@@ -10,7 +11,6 @@ function WarehouseListElement({
   contactName,
   contactPhone,
   contactEmail,
-  warehouseArray,
   setWarehouseArray
 }) {
   function handleDelete(){
@@ -67,7 +67,9 @@ function WarehouseListElement({
           </Modal>
         </div>
         <div className="table-cell table-cell--right">
+          <Link to = {`edit/${id}`} >
           <button className="icon-edit"></button>
+          </Link>
         </div>
       </div>
     </li>
