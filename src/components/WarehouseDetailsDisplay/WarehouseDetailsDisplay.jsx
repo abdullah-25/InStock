@@ -9,7 +9,7 @@ function WarehouseDetailsDisplay({ id,warehouse_name, address,city, contact_name
            
             <button className="detailheader__back" onClick={() => {window.history.back()}}></button>
             <h1 className="detailheader__title">{warehouse_name}</h1>
-            <Link to = {`/edit/${id}`} >
+            <Link to = {`/warehouse/edit/${id}`} >
             <button className="detailheader__edit--mobile"></button>
             <button className="detailheader__edit--tablet">
                 <img src = {edit} alt = "" />

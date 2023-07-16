@@ -12,7 +12,7 @@ function Header() {
                 </Link>
             </div>
 
-            <NavLink to="/" className="header__button">
+            <NavLink to="/warehouse" className="header__button">
                <p className="body-large">Warehouses</p>
             </NavLink>
             <NavLink to="/inventory" className="header__button">

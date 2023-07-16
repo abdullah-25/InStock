@@ -36,7 +36,7 @@ function WarehouseListElement({
       <div className="table-cell">
         <p className="body-small warehouselist__title">Warehouse</p>
 
-        <Link to ={`/${id}`}>
+        <Link to ={`/warehouse/${id}`}>
         <p className="body-small warehouselist__link">{name}
         <img src={chevron} alt="" className="warehouselist__chevron"/></p>
         </Link>
@@ -79,7 +79,7 @@ function WarehouseListElement({
           </Modal>
         </div>
         <div className="table-cell table-cell--right">
-          <Link to = {`edit/${id}`} >
+          <Link to = {`/warehouse/edit/${id}`} >
           <button className="icon-edit"></button>
           </Link>
         </div>

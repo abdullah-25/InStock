@@ -103,7 +103,9 @@ export default function EditInventory({
     <div className="outerdiv">
       <div className="container">
         <div className="container__heading">
-          <img src={arrowBack} className="container__heading--arrow" />
+        <Link to = {`/warehouse/${warehouse_id}`}>
+            <button className="detailheader__back" ></button>
+            </Link>
           <h1>Edit Inventory Item</h1>
         </div>
         <div className="container__hr"></div>

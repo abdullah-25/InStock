@@ -12,7 +12,7 @@ function WarehouseList({warehousearray}) {
                 <input className="warehouseform__input" type="text" placeholder="Search.." />
                 <img className="icon warehouseform__icon" src={search_icon} alt=""/>
                 </div>
-                <Link to="/new">
+                <Link to="/warehouse/new">
                 <button className="warehouseform__addnew" type="button"><p className="button-text">+ Add New Warehouse</p></button>
                 </Link>
             </form>

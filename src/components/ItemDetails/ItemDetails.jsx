@@ -6,7 +6,7 @@ function ItemDetails({ item }) {
     return (
         <>
             <header className="detailheader">
-                <Link to = {`/${warehouse_id}`}>
+                <Link to = {`/warehouse/${warehouse_id}`}>
             <button className="detailheader__back" ></button>
             </Link>
                 <h1 className="detailheader__title">{item_name}</h1>

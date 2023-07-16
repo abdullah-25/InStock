@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Modal } from "@mui/material";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import chevron from "../../assets/icons/chevron_right-24px.svg"
 function InventoryListElement({ id, item_name,category,status,quantity,warehouse_name,description, displayWarehouseName ,...rest}) {
     const navigate = useNavigate();
     function handleDelete(){
@@ -14,7 +15,7 @@ function InventoryListElement({ id, item_name,category,status,quantity,warehouse
         })
         handleClose()
 
-import chevron from "../../assets/icons/chevron_right-24px.svg"
+
 
 
     }
