@@ -1,6 +1,7 @@
 import "../WarehouseList/WarehouseList.scss"
 import WarehouseListElement from "../WarehouseListElement/WarehouseListElement.jsx"
 import search_icon from "../../assets/icons/search-24px.svg"
+import {Link} from "react-router-dom"
 function WarehouseList({warehousearray, setWarehouseArray}) {
     
     return (
@@ -11,7 +12,9 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
                 <input className="warehouseform__input" type="text" placeholder="Search.." />
                 <img className="icon warehouseform__icon" src={search_icon} alt=""/>
                 </div>
+                <Link to="/new">
                 <button className="warehouseform__addnew" type="button"><p className="button-text">+ Add New Warehouse</p></button>
+                </Link>
             </form>
             <ul className="warehouselist">
                 <ul className="warehouselist__labels">
