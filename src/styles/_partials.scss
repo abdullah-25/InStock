@@ -39,8 +39,11 @@ $desktop-indent: calc(
   $base-desktop-indent + ((1vw * 100) - $desktop-breakpoint) / 2
 );
 
-//Here we can just set the headers and P tags to style set out in the style guide, then the pages can handle spacing.
+a {
+  text-decoration: none;
+}
 
+//Here we can just set the headers and P tags to style set out in the style guide, then the pages can handle spacing.
 //Page Header
 h1 {
   padding: 0;
