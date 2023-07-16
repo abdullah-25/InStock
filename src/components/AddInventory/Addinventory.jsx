@@ -265,7 +265,7 @@ export default function Addinventory() {
             </div>
           </div>
           <div className="container__btndiv">
-            <button className="container__btndiv--cancel">Cancel</button>
+            <button className="container__btndiv--cancel"  onClick={() => {window.history.back()}}>Cancel</button>
             <button className="container__btndiv--add">+ Add Item</button>
           </div>
         </form>
