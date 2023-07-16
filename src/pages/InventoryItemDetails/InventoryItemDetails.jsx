@@ -8,8 +8,8 @@ function InventoryItemDetails(){
     const [item, setItem] = useState(null);
     const itemID = useParams("id").id;
     useEffect(() => {
-        axios.get(`/inventories/${itemID}`).then(response => {
-            setItem(response.data)
+        axios.get(`http://localhost:8080/api/inventories/${itemID}`).then(response => {
+            setItem(response.data[0])
         }).catch(response => {
             console.log(response.data)
         })
