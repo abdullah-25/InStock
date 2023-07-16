@@ -1,11 +1,14 @@
 
 import "./WarehouseDetailsDisplay.scss";
 import edit from "../../assets/icons/edit-button-24px.svg"; 
+import {Link} from "react-router-dom";
 function WarehouseDetailsDisplay({ warehouse_name, address,city, contact_name, contact_email,contact_phone, contact_position}){
     return (
         <>
         <header className="detailheader">
-            <button className="detailheader__back"></button>
+           
+            <button className="detailheader__back" onClick={() => {window.history.back()}}></button>
+          
             <h1 className="detailheader__title">{warehouse_name}</h1>
             <button className="detailheader__edit--mobile"></button>
             <button className="detailheader__edit--tablet">

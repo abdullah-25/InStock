@@ -24,7 +24,6 @@ function App() {
         <Route path="/inventory/:id" element={<InventoryItemDetails />} />
         <Route path="/inventory/edit/:id" element={<EditInventoryItem />} />
         <Route path="/inventory/add/" element={<AddNewInventoryItem />} />
-        {/* <Route path="/delete/" element={<Delete />} /> */}
       </Routes>
 
       <Footer />
