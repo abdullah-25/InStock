@@ -2,6 +2,9 @@ import "../WarehouseListElement/WarehouseListElement.scss";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import axios from "axios";
+
+import chevron from "../../assets/icons/chevron_right-24px.svg"
+
 function WarehouseListElement({
   id,
   name,
@@ -28,7 +31,8 @@ function WarehouseListElement({
     <li className="warehouselist__element">
       <div className="table-cell">
         <p className="body-small warehouselist__title">Warehouse</p>
-        <p className="body-small warehouselist__link">{name}</p>
+        <p className="body-small warehouselist__link">{name}
+        <img src={chevron} alt="" className="warehouselist__chevron"/></p>
       </div>
       <div className="table-cell">
         <p className="body-small warehouselist__title">Address</p>

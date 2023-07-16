@@ -1,4 +1,5 @@
 import "../InventoryListElement/InventoryListElement.scss";
+import chevron from "../../assets/icons/chevron_right-24px.svg"
 
 
 function InventoryListElement({ item_name,category,status,quantity,warehouse_name,description, displayWarehouseName}) {
@@ -8,7 +9,9 @@ function InventoryListElement({ item_name,category,status,quantity,warehouse_nam
         <li className="inventorylist__element">
                 <div className="table-cell table-cell--first">
                     <p className="label-text inventorylist__title">INVENTORY ITEM</p>
-                    <p className="body-medium inventorylist__link">{item_name}</p>
+                    <p className="body-medium inventorylist__link">{item_name}
+                    <img src={chevron} alt="" className="inventorylist__chevron"/>
+                    </p>
                 </div>
                 <div className="table-cell table-cell--category">
                     <p className="label-text inventorylist__title">CATEGORY</p>
