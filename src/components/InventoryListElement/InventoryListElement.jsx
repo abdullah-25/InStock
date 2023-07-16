@@ -2,11 +2,18 @@ import "../InventoryListElement/InventoryListElement.scss";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function InventoryListElement({ id, item_name,category,status,quantity,warehouse_name,description, displayWarehouseName ,...rest}) {
+    const navigate = useNavigate();
     function handleDelete(){
-        axios.delete(`http://localhost:8080/api/inventories/${id}`)
+        axios.delete(`http://localhost:8080/api/inventories/${id}`).then(response => {
+            navigate(0)
+
+        }).catch(error => {
+            console.log(error);
+        })
         handleClose()
+
     }
        const [open, setOpen] = useState(false);
        const handleOpen = () => setOpen(true);

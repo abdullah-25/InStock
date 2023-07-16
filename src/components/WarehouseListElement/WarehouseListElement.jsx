@@ -2,7 +2,7 @@ import "../WarehouseListElement/WarehouseListElement.scss";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 function WarehouseListElement({
   id,
   name,
@@ -11,12 +11,17 @@ function WarehouseListElement({
   contactName,
   contactPhone,
   contactEmail,
-  setWarehouseArray
 }) {
+  const navigate = useNavigate();
   function handleDelete(){
-   axios.delete(`http://localhost:8080/api/warehouses/${id}`)
+   axios.delete(`http://localhost:8080/api/warehouses/${id}`).then(() => {
+    setOpen(false)
+    //Refresh the page. This allows us to see the new data. 
+    navigate(0);
+   }).catch(response => {
+    console.log(response);
+   })
   
-      handleClose()
     }
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
