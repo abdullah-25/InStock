@@ -8,7 +8,6 @@ function InventoryListElement({ id, item_name,category,status,quantity,warehouse
     function handleDelete(){
         axios.delete(`http://localhost:8080/api/inventories/${id}`).then(response => {
             navigate(0)
-
         }).catch(error => {
             console.log(error);
         })
