@@ -30,7 +30,7 @@ function WarehouseDetails() {
             </>
         )
     }
-    console.log(warehouse);
+    
     return (
         <>
 
