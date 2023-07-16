@@ -7,7 +7,9 @@ function InventoryListElement({ id, item_name,category,status,quantity,warehouse
         <li className="inventorylist__element">
                 <div className="table-cell table-cell--first">
                     <p className="label-text inventorylist__title">INVENTORY ITEM</p>
+                    <Link to = {`/inventory/${id}`} >
                     <p className="body-medium inventorylist__link">{item_name}</p>
+                    </Link>
                 </div>
                 <div className="table-cell table-cell--category">
                     <p className="label-text inventorylist__title">CATEGORY</p>
