@@ -1,7 +1,7 @@
 import "../InventoryListElement/InventoryListElement.scss";
 import {Link} from "react-router-dom"
 
-function InventoryListElement({ id, item_name,category,status,quantity,warehouse_name,description, displayWarehouseName }) {
+function InventoryListElement({ id, item_name,category,status,quantity,warehouse_name,description, displayWarehouseName ,...rest}) {
 
     return (
         <li className="inventorylist__element">
@@ -29,8 +29,9 @@ function InventoryListElement({ id, item_name,category,status,quantity,warehouse
 
                 <div className={`table-cell ${!displayWarehouseName && "table-cell--empty"}`}>
                     <p className="label-text inventorylist__title">{!displayWarehouseName && "WAREHOUSE"}</p>
+                    <Link to={`/${rest.warehouse_id}`}>
                     <p className="body-medium warehouselist__content">{warehouse_name}</p>
-
+                    </Link>
                 </div>
                 <div className="icon-container">
                 <div className="table-cell">
