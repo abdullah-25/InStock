@@ -1,4 +1,5 @@
 import "../InventoryListElement/InventoryListElement.scss";
+
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import axios from "axios";
@@ -13,6 +14,9 @@ function InventoryListElement({ id, item_name,category,status,quantity,warehouse
         })
         handleClose()
 
+import chevron from "../../assets/icons/chevron_right-24px.svg"
+
+
     }
        const [open, setOpen] = useState(false);
        const handleOpen = () => setOpen(true);
@@ -21,9 +25,13 @@ function InventoryListElement({ id, item_name,category,status,quantity,warehouse
         <li className="inventorylist__element">
                 <div className="table-cell table-cell--first">
                     <p className="label-text inventorylist__title">INVENTORY ITEM</p>
+
                     <Link to = {`/inventory/${id}`} >
-                    <p className="body-medium inventorylist__link">{item_name}</p>
+                    <p className="body-medium inventorylist__link">{item_name}
+                     <img src={chevron} alt="" className="inventorylist__chevron"/>
+                     </p>
                     </Link>
+
                 </div>
                 <div className="table-cell table-cell--category">
                     <p className="label-text inventorylist__title">CATEGORY</p>
