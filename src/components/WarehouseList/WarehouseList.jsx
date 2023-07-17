@@ -2,7 +2,32 @@ import "../WarehouseList/WarehouseList.scss"
 import WarehouseListElement from "../WarehouseListElement/WarehouseListElement.jsx"
 import search_icon from "../../assets/icons/search-24px.svg"
 import {Link} from "react-router-dom"
-function WarehouseList({warehousearray}) {
+import { useEffect, useState } from "react"
+import axios from "axios"
+function WarehouseList({warehousearray, setWarehouseArray}) {
+
+     
+  const [isAscending, setIsAscending] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/warehouses', {
+        params: { sort_by: isAscending ? 'warehouse_name ASC' : 'warehouse_name DESC' },
+      });
+      setWarehouseArray(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const toggleSorting = () => {
+    setIsAscending((prevIsAscending) => !prevIsAscending);
+  };
+
     
     return (
         <div className="component-container">
@@ -20,7 +45,7 @@ function WarehouseList({warehousearray}) {
                 <ul className="warehouselist__labels">
                    <li className="list-label label-text">
                     Warehouse
-                    <button className="sort-up"></button>
+                    <button onClick={toggleSorting} className="sort-up"></button>
                     
                     </li>
                    <li className="list-label label-text">
