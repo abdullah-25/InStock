@@ -6,8 +6,9 @@ function WarehouseDetailsDisplay({ id,warehouse_name, address,city, contact_name
     return (
         <>
         <header className="detailheader">
-           
-            <button className="detailheader__back" onClick={() => {window.history.back()}}></button>
+            <Link to = {`/warehouse/`}>
+            <button className="detailheader__back" ></button>
+            </Link>
             <h1 className="detailheader__title">{warehouse_name}</h1>
             <Link to = {`/warehouse/edit/${id}`} >
             <button className="detailheader__edit--mobile"></button>

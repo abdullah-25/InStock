@@ -32,7 +32,7 @@ function WarehouseListElement({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <li className="warehouselist__element">
+    <li className="warehouselist__element"onClick={() => {navigate(`/warehouse/${id}`)}}>
       <div className="table-cell">
         <p className="body-small warehouselist__title">Warehouse</p>
 
