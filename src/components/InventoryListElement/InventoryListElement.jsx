@@ -23,7 +23,7 @@ function InventoryListElement({ id, item_name,category,status,quantity,warehouse
        const handleOpen = () => setOpen(true);
        const handleClose = () => setOpen(false);
     return (
-        <li className="inventorylist__element">
+        <li className="inventorylist__element" onClick={() => {navigate(`/inventory/${id}`)}}>
                 <div className="table-cell table-cell--first">
                     <p className="label-text inventorylist__title">INVENTORY ITEM</p>
 
