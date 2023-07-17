@@ -110,6 +110,7 @@ export default function EditWarehouse({
         ContactPhone,
         ContactEmail,
       })
+      //validate from backend and if we get response back we can use navigate to warehouse page
       .then(() => {})
       .catch(({ response }) => {
         console.log(`Error! ${response.data}`);

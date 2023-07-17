@@ -33,13 +33,13 @@ function InventoryList({ inventoryArray, displayWarehouseName }) {
           </li>
           <li className="list-label--end label-text">ACTIONS</li>
         </ul>
-        {/* {inventoryArray.map((item) => (
+        {inventoryArray.map((item) => (
           <InventoryListElement
             key={item.id}
             {...item}
             displayWarehouseName={displayWarehouseName}
           />
-        ))} */}
+        ))}
       </ul>
     </>
   );
