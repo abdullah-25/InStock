@@ -68,19 +68,19 @@ export default function EditWarehouse(props) {
 
         <p className={`${errors.warehouseName ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a name!</p>
         <label htmlFor="warehouseName" className="label-text">Warehouse Name</label>
-        <input className="addWarehouse__text" name="warehouseName" type="text" value={warehouse_name} onChange={handleError} />
+        <input className="addWarehouse__text" name="warehouseName" type="text" defaultValue={warehouse_name} onChange={handleError} />
         
         <p className={`${errors.warehouseAddress ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter an address!</p>
         <label htmlFor="warehouseAddress" className="label-text">Warehouse Address</label>
-        <input className="addWarehouse__text" name="warehouseAddress" type="text" value={address} onChange={handleError} />
+        <input className="addWarehouse__text" name="warehouseAddress" type="text" defaultValue={address} onChange={handleError} />
 
         <p className={`${errors.warehouseCity ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a city!</p>
         <label htmlFor="warehouseCity" className="label-text">Warehouse City</label>
-        <input className="addWarehouse__text" name="warehouseCity" type="text" value={city} onChange={handleError} />
+        <input className="addWarehouse__text" name="warehouseCity" type="text" defaultValue={city} onChange={handleError} />
 
         <p className={`${errors.warehouseCountry ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a country!</p>
         <label htmlFor="warehouseCountry" className="label-text">Warehouse Country</label>
-        <input className="addWarehouse__text" name="warehouseCountry" type="text" value={country} onChange={handleError} />
+        <input className="addWarehouse__text" name="warehouseCountry" type="text" defaultValue={country} onChange={handleError} />
 
         </div>
         <div className="flex-section">
@@ -88,19 +88,19 @@ export default function EditWarehouse(props) {
 
         <p className={`${errors.ContactName ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a name!</p>
         <label htmlFor="ContactName" className="label-text">Contact Name</label>
-        <input className="addWarehouse__text" name="ContactName" type="text" value={contact_name} onChange={handleError} />
+        <input className="addWarehouse__text" name="ContactName" type="text" defaultValue={contact_name} onChange={handleError} />
         
         <p className={`${errors.ContactPosition ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a position!</p>
         <label htmlFor="ContactPosition" className="label-text">Contact Position</label>
-        <input className="addWarehouse__text" name="ContactPosition" type="text" value={contact_position} onChange={handleError} />
+        <input className="addWarehouse__text" name="ContactPosition" type="text" defaultValue={contact_position} onChange={handleError} />
 
         <p className={`${errors.ContactPhone.match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/) ? "addWarehouse__hide" : "addWarehouse__error"}`}>  <img src={error} alt="" className= "addItem__icon" />Please enter a phone number!</p>
         <label htmlFor="ContactPhone" className="label-text">Phone Number</label>
-        <input className="addWarehouse__text" name="ContactPhone" type="text" value={contact_phone} onChange={handleError} />
+        <input className="addWarehouse__text" name="ContactPhone" type="text" defaultValue={contact_phone} onChange={handleError} />
 
         <p className={`${errors.ContactEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter an Email!</p>
         <label htmlFor="ContactEmail" className="label-text">Contact Email</label>
-        <input className="addWarehouse__text" name="ContactEmail" type="text" value={contact_email} onChange={handleError} />
+        <input className="addWarehouse__text" name="ContactEmail" type="text" defaultValue={contact_email} onChange={handleError} />
 
         </div>
         </div>

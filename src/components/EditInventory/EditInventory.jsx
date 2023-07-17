@@ -62,7 +62,7 @@ export default function EditInventory(props) {
         
         <p className={`${errors.description ? "addItem__hide" : "addItem__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a description!</p>
         <label htmlFor="description" className="label-text">Item Description</label>
-        <textarea className="addItem__textarea" name="description" value={description} onChange={handleError}></textarea>
+        <textarea className="addItem__textarea" name="description" defaultValue={description} onChange={handleError}></textarea>
         
         <p className={`${errors.category ? "addItem__hide" : "addItem__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a category!</p>
         <label htmlFor="category" className="label-text">Item Category</label>
