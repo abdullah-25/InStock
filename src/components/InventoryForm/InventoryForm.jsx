@@ -11,7 +11,7 @@ function InventoryForm() {
                 <img className="icon itemform__icon" src={search_icon} alt=""/>
                 </div>
                 <Link to = "/inventory/add">
-                <button className="itemform__addnew" type="button">+ Add New Item</button>
+                <button className="itemform__addnew" type="button"><p className="button-text">+ Add New Item</p></button>
                 </Link>
             </form>
     )
