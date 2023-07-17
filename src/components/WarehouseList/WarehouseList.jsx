@@ -13,7 +13,7 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
     const fetchData = async () => {
         try {
           const response = await axios.get('http://localhost:3000/warehouses', {
-            params: { sort_by: isAscending ? 'warehouse_name ASC' : 'warehouse_name DESC' },
+            params: { sort_by: isAscending ? 'warehouse_name_ASC' : 'warehouse_name_DESC' },
           });
           setWarehouseArray(response.data);
         } catch (error) {
