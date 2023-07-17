@@ -21,7 +21,7 @@ function Warehouses(){
    }
     return (
         <div className="positioning">
-            <WarehouseList warehousearray={warehouseArray} />
+            <WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>
         </div>
     )
 }
