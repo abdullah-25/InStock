@@ -10,22 +10,20 @@ import Inventory from "./pages/Inventory/Inventory";
 import InventoryItemDetails from "./pages/InventoryItemDetails/InventoryItemDetails";
 import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import EditWarehouses from "./pages/EditWarehouses/EditWarehouses";
-import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Warehouses />} />
-        <Route path="/:id" element={<WarehouseDetails />} />
-        <Route path="/edit/:id" element={<EditWarehouses />} />
-        <Route path="/new" element={<NewWarehouse />} />
+        <Route path="/warehouse" element={<Warehouses />} />
+        <Route path="/warehouse/:id" element={<WarehouseDetails />} />
+        <Route path="/warehouse/edit/:id" element={<EditWarehouses />} />
+        <Route path="/warehouse/new" element={<AddNewWarehouse />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/inventory/:id" element={<InventoryItemDetails />} />
         <Route path="/inventory/edit/:id" element={<EditInventoryItem />} />
         <Route path="/inventory/add/" element={<AddNewInventoryItem />} />
-        {/* <Route path="/delete/" element={<Delete />} /> */}
       </Routes>
 
       <Footer />

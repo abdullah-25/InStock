@@ -121,6 +121,9 @@ export default function NewWarehouse() {
           <Link to={`/`} style={{ textDecoration: "none" }}>
             <img src={arrowBack} className="container__heading--arrow" />
           </Link>
+
+          {/* <button className="back-button" onClick={() => {window.history.back()}}></button> */}
+
           <h1>Add a New Warehouse</h1>
         </div>
         <div className="container__hr"></div>
@@ -292,9 +295,19 @@ export default function NewWarehouse() {
             </div>
           </div>
           <div className="container__btndiv">
-            <Link to={`/`} style={{ textDecoration: "none" }}>
-              <button className="container__btndiv--cancel">Cancel</button>
-            </Link>
+            {/* // <Link to={`/`} style={{ textDecoration: "none" }}>
+            //   <button className="container__btndiv--cancel">Cancel</button>
+            // </Link> */}
+
+            <button
+              className="container__btndiv--cancel"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              Cancel
+            </button>
+
             <button className="container__btndiv--add">+ Add Warehouse</button>
           </div>
         </form>

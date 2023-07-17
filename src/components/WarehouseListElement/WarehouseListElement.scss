@@ -32,6 +32,13 @@
       }
     }
   }
+  &__chevron{
+    transition: ease-in 0.25s;
+    
+  &:hover{
+    transform: translateX(4px);
+  }
+}
   &__title {
     color: $text-table-header;
     font-weight: 600;
@@ -47,6 +54,9 @@
   &__link {
     color: $text-link;
     font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }
 .icon-delete {
