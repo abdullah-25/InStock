@@ -76,6 +76,7 @@
         @include tablet{
             width:40%;
             border-right: 1px solid $divider;
+            margin-right:1rem;
         }
     }
 }
