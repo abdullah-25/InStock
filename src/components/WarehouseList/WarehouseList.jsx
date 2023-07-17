@@ -12,16 +12,24 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
   useEffect(() => {
     const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:3000/warehouses', {
-            params: { sort_by: isAscending ? 'warehouse_name_ASC' : 'warehouse_name_DESC' },
+            console.log('running')
+            console.log(isAscending)
+          const response = await axios.get('http://localhost:8080/api/warehouses', {
+            params: { sort_by: isAscending ? 'warehouse_name ACS' : 'warehouse_name DESC' },
           });
           setWarehouseArray(response.data);
+          console.log(response.data)
         } catch (error) {
-          console.error(error);
+          console.log(error);
         }
       };
     fetchData();
-  }, []);
+  }, [isAscending]);
+
+  
+  const toggleSorting = () => {
+      setIsAscending((prevIsAscending) => !prevIsAscending);
+  };
 
 //   const fetchData = async () => {
 //     try {
@@ -34,9 +42,6 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
 //     }
 //   };
 
-  const toggleSorting = () => {
-    setIsAscending((prevIsAscending) => !prevIsAscending);
-  };
 
     
     return (
