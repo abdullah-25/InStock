@@ -13,7 +13,7 @@ function WarehouseDetailsDisplay({ id,warehouse_name, address,city, contact_name
             <Link to = {`/warehouse/edit/${id}`} >
             <button className="detailheader__edit--mobile"></button>
             <button className="detailheader__edit--tablet">
-                <img src = {edit} alt = "" />
+                <img class="edit-icon" src = {edit} alt = "" />
                Edit
                 </button>
             </Link>
