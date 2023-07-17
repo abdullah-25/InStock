@@ -7,7 +7,7 @@ function Header() {
         <header className="header">
             <div className="header__content">
             <div className="header__title">
-                <Link to="/">
+                <Link to="/warehouse">
                     <img src={Logo} alt="Instock Logo" className="header__image" />
                 </Link>
             </div>
