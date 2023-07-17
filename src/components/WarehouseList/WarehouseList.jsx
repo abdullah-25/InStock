@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 function WarehouseList({warehousearray}) {
     
     return (
-        <div className="component-container">
+        <>
             <form className="warehouseform">
                 <h1 className="title">Warehouses</h1>
                 <div className="warehouseform__search">
@@ -43,7 +43,7 @@ function WarehouseList({warehousearray}) {
                 </ul>
                { warehousearray.map((warehouse) => <WarehouseListElement key={warehouse.id} id={warehouse.id} name={warehouse.warehouse_name} address={warehouse.address} city={warehouse.city}contactName={warehouse.contact_name} contactPhone={warehouse.contact_phone} contactEmail={warehouse.contact_email} warehousearray={warehousearray}  />)}
             </ul>
-        </div>
+        </>
     );
 }
 export default WarehouseList
