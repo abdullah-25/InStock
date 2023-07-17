@@ -4,120 +4,123 @@
 * {
     box-sizing: border-box;
 }
-
-.card{
-    &__heading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      @include tablet {
-        display: inline-flex;
-        padding-left: 2rem;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-      &-arrow {
-        padding-right: 0.5rem;
-      }
-    }
-  
-    &__form {
-      padding-top: 1rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-  
-      @include tablet {
-        display: flex;
-        flex: 1;
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
-  
-      &__inventory {
-        @include tablet {
-          width: 50%;
-        }
-        &-title {
-          padding-bottom: 1.5rem;
-        }
-        &-input {
-          width: 100%;
-          height: 36px;
-          border-radius: 20px;
-          background: linear-gradient(0deg, #ffffff, #ffffff);
-          border: 1px solid #bdc5d5;
-          margin-bottom: 1rem;
-          padding-left: 1rem;
-        }
-        &-hr {
-          border: 1px solid $divider;
-          margin-left: -1rem;
-          margin-right: -1rem;
-  
-          @include tablet {
-            display: none;
-          }
-        }
-      }
-  
-      &__availabilty {
-        @include tablet {
-          width: 50%;
-        }
-        &-title {
-          padding-top: 1rem;
-          padding-bottom: 1.5rem;
-          @include tablet {
-            padding-top: 0;
-          }
-        }
-        &-verticalline {
-          border-left: 1px solid $divider;
-          margin-left: 2rem;
-          margin-right: 2rem;
-        }
-      }
-    }
-  
-    &__hr {
-      border: 1px solid $divider;
-    }
-    &__buttons {
-      height: 100%;
-      margin-top: 1rem;
-  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f7f8f9;
-      @include tablet {
-        justify-content: flex-end;
-      }
-      &-cancel {
-        background: White;
-        padding: 8px 21px 8px 21px;
-        border-radius: 20px;
-        border: 1px solid grey;
-        margin-right: 2rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        @include tablet {
-          padding: 8px 16px 8px 16px;
-        }
-      }
-      &-save {
-        background: #2e66e5;
-        color: white;
-        border-style: none;
-        padding: 8px 21px 8px 21px;
-        border-radius: 20px;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        @include tablet {
-          margin-right: 2rem;
-        }
-      }
+.addItem {
+  display: flex;
+  flex-direction: column;
+  @include tablet{
+    flex-direction: row;
+  }
+  &__title{
+    margin-bottom: 1rem;
+  }
+  &__text{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    margin-bottom: 1rem;
+  }
+  &__select{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    width:100%;
+    margin-bottom: 1rem;
+  }
+  &__dropdown{
+    width:24px;
+    height:24px;
+    position:absolute;
+    right:12px;
+    top:4px;
+  }
+  &__textarea{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    height: 5rem;
+    text-align: top;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-family: TitilliumWeb;
+    color:$text-primary;
+    resize:none;
+    margin-bottom: 1rem;
+  }
+  &__quantity{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  &__cancel{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    outline: none;
+    background-color: #FFF;
+    width:50%;
+    @include tablet{
+      width: auto;
     }
   }
+  &__submit{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    outline: none;
+    background-color: $button-background;
+    color:$text-button;
+    width:50%;
+    @include tablet{
+      width: auto;
+    }
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    background-color: $form-background;
+    padding:$mobile-indent;
+    @include tablet{
+      justify-content: flex-end;
+    }
+  }
+  &__error{
+    color:red;
+  }
+  &__icon{
+    display:inline;
+    width:24px;
+  }
+  &__hide{
+    display:none;
+  }
+}
+.select-icon-styling{
+  position: relative;
+}
+.radio-spacing{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+ 
+  &__right{
+    margin-left: auto;
+    @include tablet{
+      margin-left: 2rem;
+    }
+  }
+}
+.flex-section{
+  display:flex;
+  flex-direction: column;
+  background-color: #FFF;
+  padding: $mobile-indent ;
+  border-top: 1px solid $divider;
+  @include tablet{
+    width:50%;
+    border-right: 1px solid $divider;
+    border-top:none;
+    padding: 0 $tablet-indent;
+    margin: $tablet-indent 0;
+  }
+}

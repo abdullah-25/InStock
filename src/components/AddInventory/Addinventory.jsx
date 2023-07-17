@@ -1,275 +1,114 @@
-import arrowBack from "../../assets/icons/arrow_back-24px.svg";
+import dropdown from "../../assets/icons/arrow_drop_down-24px.svg"
 import error from "../../assets/icons/error-24px.svg";
 import { useState, useEffect } from "react";
-import "../../components/NewWarehouse/NewWarehouse.scss";
-import "../EditInventory/EditInventory.scss";
+import "../AddInventory/AddInventory.scss";
 import axios from "axios";
 
 export default function Addinventory() {
-  const [itemName, setitemName] = useState("");
-  const [Category, setCategory] = useState("");
-  const [Status, setStatus] = useState("");
-  const [Description, setDescription] = useState("");
-  const [Quantity, setQuantity] = useState("");
-  const [Warehouse, setWarehouse] = useState("");
-  const [QuantityShown, setQuantityShown] = useState("");
-
-  const [errors, setErrors] = useState("");
-
-  function handleChangeitemName(e) {
-    setitemName(e.target.value);
-  }
-  function handleChangeCategory(e) {
-    setCategory(e.target.value);
-  }
-  function handleChangeStatus(e) {
-    setStatus(e.target.value);
-    setQuantityShown(e.target.value);
-    showQuantity(QuantityShown);
-  }
-  function handleChangeQuantity(e) {
-    setQuantity(e.target.value);
-  }
-
-  function handleChangeDescription(e) {
-    setDescription(e.target.value);
-  }
-  function handleChangeWarehouse(e) {
-    setWarehouse(e.target.value);
-  }
-
-  function showQuantity(QuantityShown) {
-    if (QuantityShown === "Instock") {
-      return false;
-    } else {
-      return true;
+  //On load, all these values are true. This is to prevent showing errors before the user has typed anything.
+  const [errors, setErrors] = useState({
+    item_name: true,
+    description: true,
+    category: true,
+    status: "false",
+    quantity: true,
+    warehouse_id: true,
+    //This one value is changed whenever a new input occurs
+    userInteracted: false,
+  })
+  const submitDetails = (evt) => {
+    evt.preventDefault();
+    let item = {
+      warehouse_id: evt.target.warehouse_id.value,
+      item_name: evt.target.item_name.value,
+      description: evt.target.description.value,
+      category: evt.target.category.value,
+      status: evt.target.status.value,
+      quantity: evt.target.quantity.value,
     }
-  }
-
-  function SubmitDetails(e) {
-    e.preventDefault();
-
-    const errors = {};
-
-    if (!itemName) {
-      errors.itemName = true;
-    }
-
-    if (!Category) {
-      errors.category = true;
-    }
-
-    if (!Status) {
-      errors.status = true;
-    }
-    if (!Quantity) {
-      errors.quantity = true;
-    }
-    if (!Description) {
-      errors.description = true;
-    }
-    if (!Warehouse) {
-      errors.warehouse = true;
-    }
-
-    setErrors(errors);
-
-    //make axios post request with these values
-    axios
-      .post("http://localhost:8080/api/inventories", {
-        itemName,
-        Category,
-        Description,
-        Status,
-        Quantity,
-        Warehouse,
-      })
-      .then(() => {})
-      .catch((response) => {
+    //Validation
+    setErrors({ ...item, userInteracted: errors.userInteracted })
+    if (item.item_name && item.description && item.category && item.quantity && item.warehouse_id && errors.userInteracted) {
+      axios.post("http://localhost:8080/api/inventories", item).then(response => {
         console.log(response);
-      });
+      }).catch(response => {
+        console.log(response)
+      })
+    }
   }
+  const handleError = (evt) => {
+    errors[evt.target.name] = evt.target.value;
+    errors.userInteracted = true;
+    setErrors({ ...errors });
 
+  }
   return (
-    <div className="outerdiv">
-      <div className="container">
-        <div className="container__heading">
-          <img src={arrowBack} className="container__heading--arrow" />
-          <h1>Add New Inventory Item</h1>
+    <>
+      <header className="detailheader">
+        <button className="detailheader__back"></button>
+        <h1 className="detailheader__title">Add New Inventory Item</h1>
+      </header>
+      <form onSubmit={submitDetails}>
+        <div className="addItem">
+        <div className="flex-section">
+        <h2 className="addItem__title">Item Details</h2>
+        <p className={`${errors.item_name ? "addItem__hide" : "addItem__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a name!</p>
+        <label htmlFor="item_name" className="label-text">Item Name</label>
+        <input className="addItem__text" name="item_name" type="text" placeholder="Item name" onChange={handleError} />
+        <p className={`${errors.description ? "addItem__hide" : "addItem__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a description!</p>
+        <label htmlFor="description" className="label-text">Item Description</label>
+        <textarea className="addItem__textarea" name="description" placeholder="Enter Description" onChange={handleError}></textarea>
+        <p className={`${errors.category ? "addItem__hide" : "addItem__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a category!</p>
+        <label htmlFor="category" className="label-text">Item Category</label>
+        <div className="select-icon-styling">
+        <select name="category" defaultValue="" className="addItem__select" onChange={handleError}>
+        <option value="" disabled hidden>Select Category</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Sports">Sports</option>
+          <option value="Gear">Gear</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Health">Health</option>
+        </select>
+        <img className="addItem__dropdown" src = {dropdown} alt=""/>
         </div>
-        <div className="container__hr"></div>
-        <form onSubmit={SubmitDetails}>
-          <div className="container__form">
-            <div className="container__container__form__warehouse">
-              <h2 className="container__form__warehouse--title">
-                Item Details
-              </h2>
-              <div className="label-text">Item Name</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.warehouseName
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                placeholder="Item Name"
-                name="itemName"
-                onChange={handleChangeitemName}
-              ></input>
-              {errors.itemName && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-              <div className="label-text">Description</div>
-              <textarea
-                type="text"
-                className={`description ${
-                  errors.description ? "description--invalid" : ""
-                }`}
-                placeholder="Please enter a brief item description..."
-                name="description"
-                onChange={handleChangeDescription}
-              ></textarea>
-              {errors.description && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-              <div className="label-text">Category</div>{" "}
-              <select
-                type="text"
-                className={`container__form__warehouse--input dropdown ${
-                  errors.category
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="category"
-                onChange={handleChangeCategory}
-              >
-                <option value="" disabled selected hidden>
-                  Please Select
-                </option>
-                <option value="Electronics">Electronics </option>
-                <option value="Gear">Gear</option>
-                <option value="Health">Health</option>
-                <option value="Accessories">Accessories</option>
-                <option value="Apparel">Apparel</option>
-              </select>
-              {errors.category && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-            </div>
-            <div className="container__form__warehouse--hr"></div>
-            <div className="container__form__contact--verticalline"></div>
-            <div className="container__form__contact">
-              <h2 className="container__form__contact--title">
-                Item Availability
-              </h2>
-
-              <div className="label-text">Status</div>
-              <div className="radiobtns-outer">
-                <div className="radiobtns-outer--radio">
-                  <input
-                    type="radio"
-                    className={`description__status .body-medium ${
-                      errors.status ? "description__status--invalid" : ""
-                    }`}
-                    name="Instock"
-                    value="Instock"
-                    onChange={handleChangeStatus}
-                  ></input>
-                  <label for="Instock">In Stock</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    className={`description__status .body-medium ${
-                      errors.status ? "description__status--invalid" : ""
-                    }`}
-                    name="OutofStock"
-                    value="Outofstock"
-                    onChange={handleChangeStatus}
-                  ></input>
-                  <label for="Out of stock">Out of Stock</label>
-                </div>
-              </div>
-              {showQuantity(QuantityShown) ? (
-                ""
-              ) : (
-                <div className="quantity">
-                  <div className="label-text">quantity</div>
-                  <input
-                    type="number"
-                    className={`container__form__warehouse--input ${
-                      errors.quantity
-                        ? "container__form__warehouse--input--invalid"
-                        : ""
-                    }`}
-                    //placeholder="name"
-                    name="quantity"
-                    placeholder="0"
-                    onChange={handleChangeQuantity}
-                  ></input>
-                  {errors.status && (
-                    <div className="error">
-                      <img src={error} />
-                      <div className="error--text">This field is required</div>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {errors.quantity && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-              <div className="label-text">Warehouse</div>
-              <select
-                type="text"
-                className={`container__form__warehouse--input dropdown ${
-                  errors.warehouse
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="warehouseName"
-                placeholder="Please Select"
-                onChange={handleChangeWarehouse}
-              >
-                {" "}
-                <option value="" disabled selected hidden>
-                  Please Select
-                </option>
-                <option value="Manhattan">Manhattan</option>
-                <option value="Washington">Washington</option>
-                <option value="Jersey">Jersey</option>
-                <option value="San Fran">San Fran</option>
-                <option value="Santa Monica">Santa Monica</option>
-                <option value="Seattle">Seattle</option>
-                <option value="Miami">Miami</option>
-              </select>
-
-              {errors.warehouse && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="container__btndiv">
-            <button className="container__btndiv--cancel">Cancel</button>
-            <button className="container__btndiv--add">+ Add Item</button>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+        <div className="flex-section">
+        <h2 className="addItem__title">Item Availability</h2>
+        <label className="label-text">Status</label>
+        <div className="radio-spacing">
+        <input type="radio" name="status" value={true} id="inStock" onChange={handleError} />
+        <label htmlFor="inStock" className="label-text">In Stock</label>
+        <input type="radio" name="status" value={false} id="outOfStock" defaultChecked className="radio-spacing__right"onChange={handleError} />
+        <label htmlFor="outOfStock" className="label-text">Out of Stock</label>
+        </div>
+        <p className={`${errors.warehouse_id ? "addItem__hide" : "addItem__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a warehouse!</p>
+        <label htmlFor="warehouse_id" className="label-text">Warehouse</label>
+        <div className="select-icon-styling">
+        <select name="warehouse_id"  defaultValue="" className="addItem__select" onChange={handleError}>
+          <option value="" disabled hidden>Select Name</option>
+          <option value="1">Manhattan</option>
+          <option value="2">Washington</option>
+          <option value="3">Jersey</option>
+          <option value="4">SF</option>
+          <option value="5">Santa Monica</option>
+          <option value="6">Seattle</option>
+          <option value="7">Miami</option>
+          <option value="8">Boston</option>
+        </select>
+        <img className="addItem__dropdown" src = {dropdown} alt=""/>
+        </div>
+        <div className={`addItem__quantity ${errors.status === "false"  && "addItem__hide"}`} >
+        <p className={`${errors.quantity ? "addItem__hide" : "addItem__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a quantity!</p>
+        <label htmlFor="quantity" className="label-text">Quantity</label>
+        <input name="quantity" type="text" placeholder="Quantity" className="addItem__text" onChange={handleError} />
+        </div>
+        </div>
+        </div>
+        <div className="addItem__buttons">
+        <button className="addItem__cancel">Cancel</button>
+        <button className="addItem__submit" type="submit" >+ Add Item</button>
+        </div>
+      </form>
+    </>
   );
 }

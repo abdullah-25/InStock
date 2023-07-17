@@ -1,298 +1,112 @@
-import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
 import { useState } from "react";
-import "./NewWarehouse.scss";
+import "../NewWarehouse/NewWarehouse.scss";
 import axios from "axios";
 
 export default function NewWarehouse() {
-  const [warehouseName, setwarehouseName] = useState("");
-  const [warehouseAddress, setwarehouseAddress] = useState("");
-  const [warehouseCountry, setwarehouseCountry] = useState("");
-  const [warehouseCity, setwarehouseCity] = useState("");
-  const [ContactName, setContactName] = useState("");
-  const [ContactPosition, setContactPosition] = useState("");
-  const [ContactPhone, setContactPhone] = useState("");
-  const [ContactEmail, setContactEmail] = useState("");
-  const [errors, setErrors] = useState({});
+  //On load, all these values are true. This is to prevent showing errors before the user has typed anything.
+  const [errors, setErrors] = useState({
+    warehouseName:true,
+    warehouseAddress:true,
+    warehouseCountry:true,
+    warehouseCity:true,
+    ContactName:true,
+    ContactPosition:true,
+    ContactPhone:"647-555-9253",
+    ContactEmail:"wrong@wrong.com",
+    userInteracted:true
+  })
+  const submitDetails = (evt) => {
+    evt.preventDefault();
 
-  function handleChangeWareHouseName(e) {
-    setwarehouseName(e.target.value);
-  }
-  function handleChangeWareHouseAddress(e) {
-    setwarehouseAddress(e.target.value);
-  }
-  function handleChangeWareHouseCountry(e) {
-    setwarehouseCountry(e.target.value);
-  }
-  function handleChangeWareHouseCity(e) {
-    setwarehouseCity(e.target.value);
-  }
-
-  function handleChangeContactName(e) {
-    setContactName(e.target.value);
-  }
-  function handleChangeContactPosition(e) {
-    setContactPosition(e.target.value);
-  }
-  function handleChangeContactEmail(e) {
-    setContactEmail(e.target.value);
-    checkEmail(ContactEmail);
-  }
-  function handleChangeContactPhone(e) {
-    setContactPhone(e.target.value);
-    checkPhoneNumber(ContactPhone);
-  }
-
-  function SubmitDetails(e) {
-    e.preventDefault();
-
-    const errors = {};
-
-    if (!warehouseName) {
-      errors.warehouseName = true;
+    let warehouse = {
+    warehouseName:evt.target.warehouseName.value,
+    warehouseAddress:evt.target.warehouseAddress.value,
+    warehouseCountry:evt.target.warehouseCountry.value,
+    warehouseCity:evt.target.warehouseCity.value,
+    ContactName:evt.target.ContactName.value,
+    ContactPosition:evt.target.ContactPosition.value,
+    ContactPhone:evt.target.ContactPhone.value,
+    ContactEmail:evt.target.ContactEmail.value,
     }
-
-    if (!warehouseAddress) {
-      errors.warehouseAddress = true;
-    }
-    if (!warehouseCity) {
-      errors.warehouseCity = true;
-    }
-
-    if (!warehouseCountry) {
-      errors.warehouseCountry = true;
-    }
-    if (!ContactName) {
-      errors.ContactName = true;
-    }
-    if (!ContactPosition) {
-      errors.ContactPosition = true;
-    }
-    if (!ContactPhone) {
-      errors.ContactPhone = true;
-    }
-    if (!ContactEmail) {
-      errors.ContactEmail = true;
-    }
-
-    setErrors(errors);
-
-    //make axios post request with these values
-    axios
-      .post("http://localhost:8080/api/warehouse", {
-        warehouseName,
-        warehouseAddress,
-        warehouseCity,
-        warehouseCountry,
-        ContactPhone,
-        ContactEmail,
-        ContactName,
-        ContactPosition,
-      })
-      .then(() => {})
-      .catch((response) => {
+    //Validation
+    setErrors({ ...warehouse, userInteracted: errors.userInteracted })
+    if (
+    errors.warehouseName&&
+    errors.warehouseAddress&&
+    errors.warehouseCountry&&
+    errors.warehouseCity&&
+    errors.ContactName&&
+    errors.ContactPosition&&
+    errors.ContactPhone&&
+    errors.ContactEmail&&
+    errors.userInteracted) {
+      axios.post("http://localhost:8080/api/warehouses", warehouse).then(response => {
         console.log(response);
-      });
-  }
-  function checkPhoneNumber(ContactPhone) {
-    let phoneno = /^\d{10}$/;
-    if (ContactPhone.match(phoneno)) {
-      return true;
-    } else {
-      alert("Enter Phone Number with the correct format");
-      return false;
+      }).catch(response => {
+        console.log(response);
+      })
     }
   }
-  function checkEmail(e) {
-    let regex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    if (e.target.value.match(regex)) {
-      return true;
-    } else return false;
+  const handleError = (evt) => {
+    errors[evt.target.name] = evt.target.value;
+    errors.userInteracted = true;
+    setErrors({ ...errors });
   }
-
   return (
-    <div className="outerdiv">
-      <div className="container">
-        <div className="container__heading">
-          <img src={arrowBack} className="container__heading--arrow" />
-          <h1>Add a New Warehouse</h1>
+    <>
+      <header className="detailheader">
+        <button className="detailheader__back"></button>
+        <h1 className="detailheader__title">Add New Warehouse</h1>
+      </header>
+      <form onSubmit={submitDetails}>
+        <div className="addWarehouse">
+        <div className="flex-section">
+        <h2 className="addWarehouse__title">Warehouse Details</h2>
+
+        <p className={`${errors.warehouseName ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a name!</p>
+        <label htmlFor="warehouseName" className="label-text">Warehouse Name</label>
+        <input className="addWarehouse__text" name="warehouseName" type="text" placeholder="Warehouse Name" onChange={handleError} />
+        
+        <p className={`${errors.warehouseAddress ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter an address!</p>
+        <label htmlFor="warehouseAddress" className="label-text">Warehouse Address</label>
+        <input className="addWarehouse__text" name="warehouseAddress" type="text" placeholder="Warehouse Address" onChange={handleError} />
+
+        <p className={`${errors.warehouseCity ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a city!</p>
+        <label htmlFor="warehouseCity" className="label-text">Warehouse City</label>
+        <input className="addWarehouse__text" name="warehouseCity" type="text" placeholder="Warehouse City" onChange={handleError} />
+
+        <p className={`${errors.warehouseCountry ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a country!</p>
+        <label htmlFor="warehouseCountry" className="label-text">Warehouse Country</label>
+        <input className="addWarehouse__text" name="warehouseCountry" type="text" placeholder="Warehouse Country" onChange={handleError} />
+
         </div>
-        <div className="container__hr"></div>
-        <form onSubmit={SubmitDetails}>
-          <div className="container__form">
-            <div className="container__form__warehouse">
-              <h2 className="container__form__warehouse--title">
-                Warehouse Details
-              </h2>
+        <div className="flex-section">
+        <h2 className="addWarehouse__title">Contact Details</h2>
 
-              <div className="label-text">Warehouse Name</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.warehouseName
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                placeholder="Warehouse Name"
-                name="warehouseName"
-                onChange={handleChangeWareHouseName}
-              ></input>
+        <p className={`${errors.ContactName ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a name!</p>
+        <label htmlFor="ContactName" className="label-text">Contact Name</label>
+        <input className="addWarehouse__text" name="ContactName" type="text" placeholder="Contact Name" onChange={handleError} />
+        
+        <p className={`${errors.ContactPosition ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a position!</p>
+        <label htmlFor="ContactPosition" className="label-text">Contact Position</label>
+        <input className="addWarehouse__text" name="ContactPosition" type="text" placeholder="Contact Position" onChange={handleError} />
 
-              {errors.warehouseName && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
+        <p className={`${errors.ContactPhone.match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/) ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a phone number!</p>
+        <label htmlFor="ContactPhone" className="label-text">Phone Number</label>
+        <input className="addWarehouse__text" name="ContactPhone" type="text" placeholder="Phone Number" onChange={handleError} />
 
-              <div className="label-text">Street Address</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.warehouseAddress
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                placeholder="Address"
-                name="warehouseAddress"
-                onChange={handleChangeWareHouseAddress}
-              ></input>
+        <p className={`${errors.ContactEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter an Email!</p>
+        <label htmlFor="ContactEmail" className="label-text">Contact Email</label>
+        <input className="addWarehouse__text" name="ContactEmail" type="text" placeholder="Contact Email" onChange={handleError} />
 
-              {errors.warehouseAddress && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-
-              <div className="label-text">City</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.warehouseCity
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="warehouseCity"
-                placeholder="City"
-                onChange={handleChangeWareHouseCity}
-              ></input>
-              {errors.warehouseCity && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-
-              <div className="label-text">Country</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.warehouseCountry
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="warehouseCountry"
-                placeholder="Country"
-                onChange={handleChangeWareHouseCountry}
-              ></input>
-              {errors.warehouseCountry && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-            </div>
-            <div className="container__form__warehouse--hr"></div>
-            <div className="container__form__contact--verticalline"></div>
-            <div className="container__form__contact">
-              <h2 className="container__form__contact--title">
-                Contact Details
-              </h2>
-
-              <div className="label-text">Contact Name</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.ContactName
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="contactName"
-                autocomplete="name"
-                placeholder="Name"
-                onChange={handleChangeContactName}
-              ></input>
-              {errors.ContactName && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-              <div className="label-text">Position</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.ContactPosition
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="contactPosition"
-                placeholder="Position"
-                onChange={handleChangeContactPosition}
-              ></input>
-              {errors.ContactPosition && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-              <div className="label-text">Phone Number</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.ContactPhone
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="contactPhone"
-                placeholder="Phone Number"
-                onClick={handleChangeContactPhone}
-              ></input>
-              {errors.ContactPhone && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-              <div className="label-text">Email</div>
-              <input
-                type="text"
-                className={`container__form__warehouse--input ${
-                  errors.ContactEmail
-                    ? "container__form__warehouse--input--invalid"
-                    : ""
-                }`}
-                name="contactEmail"
-                placeholder="Email"
-                onClick={handleChangeContactEmail}
-              ></input>
-              {errors.ContactEmail && (
-                <div className="error">
-                  <img src={error} />
-                  <div className="error--text">This field is required</div>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="container__btndiv">
-            <button className="container__btndiv--cancel">Cancel</button>
-            <button className="container__btndiv--add">+ Add Warehouse</button>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+        </div>
+        <div className="addWarehouse__buttons">
+        <button className="addWarehouse__cancel">Cancel</button>
+        <button className="addWarehouse__submit" type="submit" >+ Add Warehouse</button>
+        </div>
+      </form>
+    </>
   );
 }

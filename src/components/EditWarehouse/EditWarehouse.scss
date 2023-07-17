@@ -1,2 +1,78 @@
-@use "/src/styles/partials.scss" as *;
-@use "/src/styles/colors.scss" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/partials" as *;
+
+* {
+    box-sizing: border-box;
+}
+.addWarehouse {
+  display: flex;
+  flex-direction: column;
+  @include tablet{
+    flex-direction: row;
+  }
+  &__title{
+    margin-bottom: 1rem;
+  }
+  &__text{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    margin-bottom: 1rem;
+  }
+ 
+ 
+  &__cancel{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    outline: none;
+    background-color: #FFF;
+    width:50%;
+    @include tablet{
+      width: auto;
+    }
+  }
+  &__submit{
+    padding:0.5rem;
+    border-radius: 1rem;
+    border:1px solid $outline;
+    outline: none;
+    background-color: $button-background;
+    color:$text-button;
+    width:50%;
+    @include tablet{
+      width: auto;
+    }
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    background-color: $form-background;
+    padding:$mobile-indent;
+    @include tablet{
+      justify-content: flex-end;
+    }
+  }
+  &__error{
+    color:red;
+  }
+  &__hide{
+    display:none;
+  }
+}
+
+.flex-section{
+  display:flex;
+  flex-direction: column;
+  background-color: #FFF;
+  padding: $mobile-indent ;
+  border-top: 1px solid $divider;
+  @include tablet{
+    width:50%;
+    border-right: 1px solid $divider;
+    border-top:none;
+    padding: 0 $tablet-indent;
+    margin: $tablet-indent 0;
+  }
+}
