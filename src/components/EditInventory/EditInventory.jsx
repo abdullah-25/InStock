@@ -1,11 +1,13 @@
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useParams } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "./EditInventory.scss";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 export default function EditInventory({
+  warehouse_id,
   item_name,
   category,
   description,
@@ -13,15 +15,23 @@ export default function EditInventory({
   quantity,
   warehouseName,
 }) {
-  const [itemName, setitemName] = useState(item_name);
-  const [Category, setCategory] = useState(category);
-  const [Status, setStatus] = useState(status);
-  const [Description, setDescription] = useState(description);
-  const [Quantity, setQuantity] = useState(quantity);
-  const [Warehouse, setWarehouse] = useState(warehouseName);
+  const [itemName, setitemName] = useState(item_name ?? " ");
+  const [Category, setCategory] = useState(category ?? " ");
+  const [Status, setStatus] = useState(status ?? " ");
+  const [Description, setDescription] = useState(description ?? " ");
+  const [Quantity, setQuantity] = useState(quantity ?? " ");
+  const [Warehouse, setWarehouse] = useState(warehouseName ?? " ");
   const [QuantityShown, setQuantityShown] = useState("");
 
   const [errors, setErrors] = useState("");
+
+  useEffect(() => {
+    setitemName(item_name ?? "");
+    setCategory(category ?? "");
+    setStatus(status ?? "");
+    setDescription(description ?? "");
+    setQuantity(quantity ?? "");
+  }, [item_name, category, description, status, quantity]);
 
   function handleChangeitemName(e) {
     setitemName(e.target.value);
@@ -33,7 +43,6 @@ export default function EditInventory({
     setStatus(e.target.value);
     setQuantityShown(e.target.value);
     showQuantity(QuantityShown);
-    console.log(QuantityShown);
   }
   function handleChangeQuantity(e) {
     setQuantity(e.target.value);
@@ -82,30 +91,37 @@ export default function EditInventory({
 
     setErrors(errors);
 
-    useEffect(() => {
-      axios
-        .put("http://localhost:8080/api/inventories", {
-          itemName,
-          Category,
-          Description,
-          Status,
-          Quantity,
-          Warehouse,
-        })
-        .then(() => {})
-        .catch((response) => {
-          console.log(response);
-        });
-    }, []);
+    if (Object.keys(errors).length > 0) {
+      return; // Return early if there are errors
+    }
+
+    axios
+      .patch(`http://localhost:8080/api/inventories/${warehouse_id}`, {
+        warehouse_id,
+        item_name: itemName,
+        description: Description,
+        category: Category,
+        status: Status,
+        quantity: Quantity,
+      })
+      .then(() => {
+        Navigate("/inventories");
+      })
+      .catch(({ response }) => {
+        console.log(`Error! ${response.data}`);
+      });
   }
 
   return (
     <div className="outerdiv">
       <div className="container">
         <div className="container__heading">
-        <Link to = {`/warehouse/${warehouse_id}`}>
-            <button className="detailheader__back" ></button>
-            </Link>
+          <button
+            className="detailheader__back"
+            onClick={() => {
+              window.history.back();
+            }}
+          ></button>
           <h1>Edit Inventory Item</h1>
         </div>
         <div className="container__hr"></div>
@@ -123,9 +139,8 @@ export default function EditInventory({
                     ? "container__form__warehouse--input--invalid"
                     : ""
                 }`}
-                placeholder={"Item Name"}
                 name="itemName"
-                value={itemName}
+                defaultValue={itemName}
                 onChange={handleChangeitemName}
               ></input>
               {errors.itemName && (
@@ -140,9 +155,8 @@ export default function EditInventory({
                 className={`description ${
                   errors.description ? "description--invalid" : ""
                 }`}
-                placeholder="Description"
                 name="description"
-                value={description}
+                defaultValue={description}
                 onChange={handleChangeDescription}
               ></textarea>
               {errors.description && (
@@ -162,7 +176,7 @@ export default function EditInventory({
                 name="category"
                 onChange={handleChangeCategory}
               >
-                <option value="" disabled selected hidden>
+                <option defaultValue="" disabled selected hidden>
                   {category}
                 </option>
                 <option value="Electronics">Electronics </option>
@@ -207,7 +221,7 @@ export default function EditInventory({
                       errors.status ? "description__status--invalid" : ""
                     }`}
                     name="OutofStock"
-                    value={status}
+                    defaultValue={status}
                     onChange={handleChangeStatus}
                   ></input>
                   <label for="Out of stock">Out of Stock</label>
@@ -227,7 +241,7 @@ export default function EditInventory({
                     }`}
                     //placeholder="name"
                     name="quantity"
-                    value={quantity}
+                    defaultValue={quantity}
                     onChange={handleChangeQuantity}
                   ></input>
                 </div>
@@ -256,11 +270,11 @@ export default function EditInventory({
                 }`}
                 name="warehouseName"
                 placeholder="Warehouse Name"
-                value={warehouseName}
+                defaultValue={warehouseName}
                 onChange={handleChangeWarehouse}
               >
                 {" "}
-                <option value="" disabled selected hidden>
+                <option defaultValue="" disabled selected hidden>
                   {warehouseName}
                 </option>
                 <option value="Manhattan">Manhattan</option>
