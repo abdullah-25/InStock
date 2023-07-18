@@ -10,7 +10,7 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
   const [whOrd, setwhOrd] = useState(true);
   const [addressOrd, setAddressOrd] = useState(true)
   const [cName, setcName] = useState(true)
-//   const [cInfo, setCInfo] = useState(true)
+  const [cInfo, setCInfo] = useState(true)
 
 
 useEffect(() => {
@@ -30,7 +30,7 @@ useEffect(() => {
 }, [whOrd]);
 
 useEffect(() => {
-    const fetchAddData = async () => {
+    const fetchAddrData = async () => {
         try {
             console.log('running2')
             console.log(addressOrd)
@@ -43,7 +43,7 @@ useEffect(() => {
           console.log(error);
         }
       };
-    fetchAddData();
+    fetchAddrData();
 }, [addressOrd]);
 
 useEffect(() => {
@@ -63,15 +63,36 @@ useEffect(() => {
     fetchCNameData();
 }, [cName]);
 
+useEffect(() => {
+    const fetchCInfoData = async () => {
+        try {
+            console.log('running4')
+          const response = await axios.get('http://localhost:8080/api/warehouses', {
+            params: { sort_by: cInfo ? 'contact_email ACS' : 'contact_email DESC' },
+          });
+          setWarehouseArray(response.data);
+          console.log(response.data)
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    fetchCInfoData();
+}, [cInfo]);
+
+
   const toggleWH = () => {
       setwhOrd((prevwhOrd) => !prevwhOrd);
   };
-  const toggleAdd = () => {
+  const toggleAddr = () => {
     setAddressOrd((prevAddressOrd) => !prevAddressOrd);
 };
 
   const toggleCName = () => {
     setcName((prevcName) => !prevcName)
+  }
+
+  const toggleCInfo = () => {
+    setCInfo((prevcInfo) => !prevcInfo)
   }
 
     return (
@@ -95,7 +116,7 @@ useEffect(() => {
                     </li>
                    <li className="list-label label-text">
                     Address
-                    <button onClick={toggleAdd} className="sort-up"></button>
+                    <button onClick={toggleAddr} className="sort-up"></button>
                    
                     </li>
                    <li className="list-label label-text">
@@ -105,7 +126,7 @@ useEffect(() => {
                     </li>
                    <li className="list-label label-text">
                     Contact Information
-                    <button className="sort-up"></button>
+                    <button onClick={toggleCInfo} className="sort-up"></button>
                     </li>
                     <li className="list-label--end label-text">
                     Actions
