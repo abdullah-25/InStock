@@ -6,16 +6,19 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 function WarehouseList({warehousearray, setWarehouseArray}) {
 
-     
-  const [isAscending, setIsAscending] = useState(true);
+    // whORD = warehouse order :)
+  const [whOrd, setwhOrd] = useState(true);
+  const [addressOrd, setAddressOrd] = useState(true)
+  const [cName, setcName] = useState(true)
+//   const [cInfo, setCInfo] = useState(true)
 
-  useEffect(() => {
-    const fetchData = async () => {
+
+useEffect(() => {
+    const fetchWHData = async () => {
         try {
             console.log('running')
-            console.log(isAscending)
           const response = await axios.get('http://localhost:8080/api/warehouses', {
-            params: { sort_by: isAscending ? 'warehouse_name ACS' : 'warehouse_name DESC' },
+            params: { sort_by: whOrd ? 'warehouse_name ACS' : 'warehouse_name DESC' },
           });
           setWarehouseArray(response.data);
           console.log(response.data)
@@ -23,27 +26,54 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
           console.log(error);
         }
       };
-    fetchData();
-  }, [isAscending]);
+    fetchWHData();
+}, [whOrd]);
 
-  
-  const toggleSorting = () => {
-      setIsAscending((prevIsAscending) => !prevIsAscending);
+useEffect(() => {
+    const fetchAddData = async () => {
+        try {
+            console.log('running2')
+            console.log(addressOrd)
+          const response = await axios.get('http://localhost:8080/api/warehouses', {
+            params: { sort_by: addressOrd ? 'address ACS' : 'address DESC' },
+          });
+          setWarehouseArray(response.data);
+          console.log(response.data)
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    fetchAddData();
+}, [addressOrd]);
+
+useEffect(() => {
+    const fetchCNameData = async () => {
+        try {
+            console.log('running3')
+            console.log(cName)
+          const response = await axios.get('http://localhost:8080/api/warehouses', {
+            params: { sort_by: cName ? 'contact_name ACS' : 'contact_name DESC' },
+          });
+          setWarehouseArray(response.data);
+          console.log(response.data)
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    fetchCNameData();
+}, [cName]);
+
+  const toggleWH = () => {
+      setwhOrd((prevwhOrd) => !prevwhOrd);
   };
+  const toggleAdd = () => {
+    setAddressOrd((prevAddressOrd) => !prevAddressOrd);
+};
 
-//   const fetchData = async () => {
-//     try {
-//       const response = await axios.get('http://localhost:3000/warehouses', {
-//         params: { sort_by: isAscending ? 'warehouse_name ASC' : 'warehouse_name DESC' },
-//       });
-//       setWarehouseArray(response.data);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
+  const toggleCName = () => {
+    setcName((prevcName) => !prevcName)
+  }
 
-
-    
     return (
         <div className="component-container">
             <form className="warehouseform">
@@ -60,17 +90,17 @@ function WarehouseList({warehousearray, setWarehouseArray}) {
                 <ul className="warehouselist__labels">
                    <li className="list-label label-text">
                     Warehouse
-                    <button onClick={toggleSorting} className="sort-up"></button>
+                    <button onClick={toggleWH} className="sort-up"></button>
                     
                     </li>
                    <li className="list-label label-text">
                     Address
-                    <button className="sort-up"></button>
+                    <button onClick={toggleAdd} className="sort-up"></button>
                    
                     </li>
                    <li className="list-label label-text">
                     Contact Name
-                    <button className="sort-up"></button>
+                    <button onClick={toggleCName} className="sort-up"></button>
                   
                     </li>
                    <li className="list-label label-text">
