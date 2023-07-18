@@ -1,6 +1,7 @@
 import dropdown from "../../assets/icons/arrow_drop_down-24px.svg"
 import error from "../../assets/icons/error-24px.svg";
 import { useState, useEffect } from "react";
+
 import "../AddInventory/AddInventory.scss";
 import axios from "axios";
 
@@ -110,5 +111,6 @@ export default function Addinventory() {
         </div>
       </form>
     </>
+
   );
 }

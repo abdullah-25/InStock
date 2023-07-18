@@ -5,6 +5,7 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: $mobile-indent;
     border-bottom: 1px solid $divider;
     @include tablet{
@@ -26,35 +27,40 @@
         outline:none;
         border:none;
         
-    }&__edit--tablet{
-        display:none;
-        @include tablet{
-            display:flex;
-            flex-direction: row;
-            align-items: center;
-            padding:0 1rem;
-            column-gap: 0.5rem;
-            border:none;
-            border-radius: 2rem;
-            background-color: $button-background;
-            color:$text-button;
-        }
-    }
-    &__edit--mobile{
-     background-color: $button-background;
-        border-radius: 50%;
-        background-image: url("../../assets/icons/edit-button-24px.svg");
-        background-position: center;
-        background-repeat: no-repeat;
-        width:36px;
-        height:36px;
-        outline:none;
-        border:none;
-        @include tablet{
+    }&__edit{
+        &--tablet{
+            height:2.5rem;
             display:none;
+            @include tablet{
+                display:flex;
+                flex-direction: row;
+                align-items: center;
+                padding:0 1rem;
+                column-gap: 0.5rem;
+                border:none;
+                border-radius: 2rem;
+                background-color: $button-background;
+                color:$text-button;
+            }
+        }
+
+        &--mobile{
+         background-color: $button-background;
+            border-radius: 50%;
+            background-image: url("../../assets/icons/edit-button-24px.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            width:36px;
+            height:36px;
+            outline:none;
+            border:none;
+            @include tablet{
+                display:none;
+            }
         }
     }
 }
+
 .details{
     display:flex;
     flex-direction: row;
@@ -71,6 +77,7 @@
         @include tablet{
             width:40%;
             border-right: 1px solid $divider;
+            margin-right:1rem;
         }
     }
 }

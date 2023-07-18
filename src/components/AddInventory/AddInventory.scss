@@ -4,6 +4,7 @@
 * {
     box-sizing: border-box;
 }
+
 .addItem {
   display: flex;
   flex-direction: column;
@@ -60,6 +61,7 @@
     width:50%;
     @include tablet{
       width: auto;
+
     }
   }
   &__submit{

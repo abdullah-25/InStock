@@ -1,5 +1,7 @@
 import error from "../../assets/icons/error-24px.svg";
+
 import {useState} from 'react';
+
 
 import "../EditWarehouse/EditWarehouse.scss";
 import axios from "axios";
@@ -81,6 +83,7 @@ export default function EditWarehouse(props) {
         <p className={`${errors.warehouseCountry ? "addWarehouse__hide" : "addWarehouse__error"}`}> <img src={error} alt="" className= "addItem__icon" /> Please enter a country!</p>
         <label htmlFor="warehouseCountry" className="label-text">Warehouse Country</label>
         <input className="addWarehouse__text" name="warehouseCountry" type="text" defaultValue={country} onChange={handleError} />
+
 
         </div>
         <div className="flex-section">

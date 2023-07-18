@@ -46,6 +46,7 @@ export default function EditInventory(props) {
 
   }
   return (
+
     <>
       <header className="detailheader">
         <button className="detailheader__back"></button>

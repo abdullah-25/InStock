@@ -7,7 +7,6 @@ function Warehouses(){
     const [warehouseArray, setWarehouseArray] = useState(undefined)
     useEffect(() => {
         axios.get("http://localhost:8080/api/warehouses").then((response) => {
-
       setWarehouseArray(response.data);
     }).catch(response => {
       console.log(response);
@@ -22,7 +21,7 @@ function Warehouses(){
    }
     return (
         <div className="positioning">
-            <WarehouseList warehousearray={warehouseArray}/>
+            <WarehouseList warehousearray={warehouseArray} setWarehouseArray={setWarehouseArray}/>
         </div>
     )
 }

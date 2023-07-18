@@ -1,17 +1,22 @@
 
 import "./WarehouseDetailsDisplay.scss";
 import edit from "../../assets/icons/edit-button-24px.svg"; 
-function WarehouseDetailsDisplay({ warehouse_name, address,city, contact_name, contact_email,contact_phone, contact_position}){
+import {Link} from "react-router-dom"
+function WarehouseDetailsDisplay({ id,warehouse_name, address,city, contact_name, contact_email,contact_phone, contact_position}){
     return (
         <>
         <header className="detailheader">
-            <button className="detailheader__back"></button>
+            <Link to = {`/warehouse/`}>
+            <button className="detailheader__back" ></button>
+            </Link>
             <h1 className="detailheader__title">{warehouse_name}</h1>
+            <Link to = {`/warehouse/edit/${id}`} >
             <button className="detailheader__edit--mobile"></button>
             <button className="detailheader__edit--tablet">
-                <img src = {edit} alt = "" />
-                Edit
+                <img class="edit-icon" src = {edit} alt = "" />
+               Edit
                 </button>
+            </Link>
         </header>
         <article className="details">
             <div className="details__title">
