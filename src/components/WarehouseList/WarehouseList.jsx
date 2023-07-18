@@ -48,9 +48,11 @@ function WarehouseList({ warehousearray }) {
             name={warehouse.warehouse_name}
             address={warehouse.address}
             city={warehouse.city}
+            country={warehouse.country}
             contactName={warehouse.contact_name}
             contactPhone={warehouse.contact_phone}
             contactEmail={warehouse.contact_email}
+            contactPosition={warehouse.contact_position}
             warehousearray={warehousearray}
           />
         ))}

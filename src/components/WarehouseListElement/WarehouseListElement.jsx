@@ -12,8 +12,10 @@ function WarehouseListElement({
   name,
   address,
   city,
+  country,
   contactName,
   contactPhone,
+  contactPosition,
   contactEmail,
 }) {
   const navigate = useNavigate();

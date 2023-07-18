@@ -5,29 +5,51 @@ import "../../components/NewWarehouse/NewWarehouse.scss";
 import "./EditWarehouse.scss";
 import axios from "axios";
 
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 export default function EditWarehouse({
-  warehousearray,
-  warehouseID,
-  warehouse_name,
+  name,
   address,
   city,
-  contact_name,
-  contact_email,
-  contact_phone,
-  contact_position,
+  country,
+  contactName,
+  contactPhone,
+  contactEmail,
+  contactPosition,
 }) {
   const { id } = useParams();
-  const [warehouseName, setwarehouseName] = useState("");
-  const [warehouseAddress, setwarehouseAddress] = useState("");
-  const [warehouseCountry, setwarehouseCountry] = useState("");
-  const [warehouseCity, setwarehouseCity] = useState("");
-  const [ContactName, setContactName] = useState("");
-  const [ContactPosition, setContactPosition] = useState("");
-  const [ContactPhone, setContactPhone] = useState("");
-  const [ContactEmail, setContactEmail] = useState("");
+  const navigate = useNavigate();
+  const [warehouseName, setwarehouseName] = useState(name ?? " ");
+  const [warehouseAddress, setwarehouseAddress] = useState(address ?? " ");
+  const [warehouseCountry, setwarehouseCountry] = useState(country ?? " ");
+  const [warehouseCity, setwarehouseCity] = useState(city ?? " ");
+  const [ContactName, setContactName] = useState(contactName ?? " ");
+  const [ContactPosition, setContactPosition] = useState(
+    contactPosition ?? " "
+  );
+  const [ContactPhone, setContactPhone] = useState(contactPhone ?? " ");
+  const [ContactEmail, setContactEmail] = useState(contactPosition ?? " ");
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    setwarehouseName(name ?? "");
+    setwarehouseAddress(address ?? "");
+    setwarehouseCountry(country ?? "");
+    setwarehouseCity(city ?? "");
+    setContactName(contactName ?? "");
+    setContactPosition(contactPosition ?? "");
+    setContactPhone(contactPhone ?? "");
+    setContactEmail(contactEmail ?? "");
+  }, [
+    name,
+    address,
+    city,
+    country,
+    contactName,
+    contactPosition,
+    contactPhone,
+    contactEmail,
+  ]);
 
   function handleChangeWareHouseName(e) {
     setwarehouseName(e.target.value);
@@ -48,13 +70,13 @@ export default function EditWarehouse({
   function handleChangeContactPosition(e) {
     setContactPosition(e.target.value);
   }
-  function handleChangeContactEmail(e) {
-    setContactEmail(e.target.value);
-    //checkEmail(ContactEmail);
-  }
   function handleChangeContactPhone(e) {
     setContactPhone(e.target.value);
-    checkPhoneNumber(ContactPhone);
+    checkPhoneNumber(e.target.value);
+  }
+  function handleChangeContactEmail(e) {
+    setContactEmail(e.target.value);
+    checkEmail(e.target.value);
   }
 
   function SubmitDetails(e) {
@@ -82,24 +104,18 @@ export default function EditWarehouse({
     if (!ContactPosition) {
       errors.ContactPosition = true;
     }
-    if (!ContactPhone) {
+    if (!ContactPhone || !checkPhoneNumber(ContactPhone)) {
       errors.ContactPhone = true;
     }
-    if (!ContactEmail) {
+    if (!ContactEmail || !checkEmail(ContactEmail)) {
       errors.ContactEmail = true;
     }
-
     setErrors(errors);
-    console.log(
-      warehouseName,
-      warehouseAddress,
-      warehouseCountry,
-      warehouseCity,
-      ContactName,
-      ContactPosition,
-      ContactPhone,
-      ContactEmail
-    );
+
+    if (Object.keys(errors).length > 0) {
+      return; // Return early if there are errors
+    }
+
     axios
       .patch(`http://localhost:8080/api/warehouses/${id}`, {
         warehouseName,
@@ -112,37 +128,45 @@ export default function EditWarehouse({
         ContactEmail,
       })
       //validate from backend and if we get response back we can use navigate to warehouse page
-      .then(() => {})
+      .then((response) => {
+        navigate("/warehouse");
+      })
       .catch(({ response }) => {
         console.log(`Error! ${response.data}`);
       });
   }
-  function checkPhoneNumber(ContactPhone) {
+  function checkPhoneNumber(phoneNumber) {
     let phoneno = /^\d{10}$/;
-    if (ContactPhone.match(phoneno)) {
+    if (phoneNumber.match(phoneno)) {
       return true;
     } else {
-      alert("Enter Phone Number with the correct format");
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        ContactPhone: true,
+      }));
       return false;
     }
   }
-  function checkEmail(e) {
+  function checkEmail(email) {
     let regex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    if (e.target.value.match(regex)) {
+    if (email.match(regex)) {
       return true;
     } else return false;
   }
 
   return (
     <div className="outerdiv">
-      {console.log(id)}
       <div className="container">
         <div className="container__heading">
-        
-            <button className="detailheader__back" onClick={()=>{window.history.back()}}></button>
-        
+          <button
+            className="detailheader__back"
+            onClick={() => {
+              window.history.back();
+            }}
+          ></button>
+
           <h1>Edit Warehouse</h1>
         </div>
         <div className="container__hr"></div>
@@ -161,9 +185,9 @@ export default function EditWarehouse({
                     ? "container__form__warehouse--input--invalid"
                     : ""
                 }`}
-                placeholder={warehouse_name}
-                name="warehouseName"
                 onChange={handleChangeWareHouseName}
+                defaultValue={warehouseName}
+                name="warehouseName"
               ></input>
 
               {errors.warehouseName && (
@@ -181,7 +205,7 @@ export default function EditWarehouse({
                     ? "container__form__warehouse--input--invalid"
                     : ""
                 }`}
-                placeholder={address}
+                defaultValue={warehouseAddress}
                 name="warehouseAddress"
                 onChange={handleChangeWareHouseAddress}
               ></input>
@@ -202,7 +226,7 @@ export default function EditWarehouse({
                     : ""
                 }`}
                 name="warehouseCity"
-                placeholder={city}
+                defaultValue={city}
                 onChange={handleChangeWareHouseCity}
               ></input>
               {errors.warehouseCity && (
@@ -221,7 +245,7 @@ export default function EditWarehouse({
                     : ""
                 }`}
                 name="warehouseCountry"
-                placeholder="Country"
+                defaultValue={country}
                 onChange={handleChangeWareHouseCountry}
               ></input>
               {errors.warehouseCountry && (
@@ -247,7 +271,7 @@ export default function EditWarehouse({
                     : ""
                 }`}
                 name="contactName"
-                placeholder={contact_name}
+                defaultValue={contactName}
                 onChange={handleChangeContactName}
               ></input>
               {errors.ContactName && (
@@ -265,7 +289,7 @@ export default function EditWarehouse({
                     : ""
                 }`}
                 name="contactPosition"
-                placeholder={contact_position}
+                defaultValue={contactPosition}
                 onChange={handleChangeContactPosition}
               ></input>
               {errors.ContactPosition && (
@@ -283,8 +307,8 @@ export default function EditWarehouse({
                     : ""
                 }`}
                 name="contactPhone"
-                placeholder={contact_phone}
-                onClick={handleChangeContactPhone}
+                value={ContactPhone}
+                onChange={handleChangeContactPhone}
               ></input>
               {errors.ContactPhone && (
                 <div className="error">
@@ -301,9 +325,10 @@ export default function EditWarehouse({
                     : ""
                 }`}
                 name="contactEmail"
-                placeholder={contact_email}
-                onClick={handleChangeContactEmail}
+                defaultValue={contactEmail}
+                onChange={handleChangeContactEmail}
               ></input>
+
               {errors.ContactEmail && (
                 <div className="error">
                   <img src={error} />
