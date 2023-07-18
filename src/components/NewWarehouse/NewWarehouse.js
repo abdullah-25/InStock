@@ -1,11 +1,12 @@
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import error from "../../assets/icons/error-24px.svg";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./NewWarehouse.scss";
 import axios from "axios";
 
 export default function NewWarehouse() {
+  const navigate = useNavigate();
   const [warehouseName, setwarehouseName] = useState("");
   const [warehouseAddress, setwarehouseAddress] = useState("");
   const [warehouseCountry, setwarehouseCountry] = useState("");
@@ -35,14 +36,19 @@ export default function NewWarehouse() {
   function handleChangeContactPosition(e) {
     setContactPosition(e.target.value);
   }
-  function handleChangeContactEmail(e) {
-    setContactEmail(e.target.value);
-  }
-  //checkEmail(ContactEmail);
   function handleChangeContactPhone(e) {
     setContactPhone(e.target.value);
+    checkPhoneNumber(e.target.value);
   }
-  //checkPhoneNumber(ContactPhone);
+  function handleChangeContactEmail(e) {
+    const email = e.target.value;
+    setContactEmail(email);
+    const isValidEmail = checkEmail(email);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      ContactEmail: !isValidEmail,
+    }));
+  }
 
   function SubmitDetails(e) {
     e.preventDefault();
@@ -69,61 +75,69 @@ export default function NewWarehouse() {
     if (!ContactPosition) {
       errors.ContactPosition = true;
     }
-    if (!ContactPhone) {
+    if (!ContactPhone || !checkPhoneNumber(ContactPhone)) {
       errors.ContactPhone = true;
     }
-    if (!ContactEmail) {
+    if (!ContactEmail || !checkEmail(ContactEmail)) {
       errors.ContactEmail = true;
     }
 
     setErrors(errors);
 
+    if (Object.keys(errors).length > 0) {
+      return; // Return early if there are errors
+    }
+
     //make axios post request with these values
     axios
       .post("http://localhost:8080/api/warehouses", {
-        warehouseName,
-        warehouseAddress,
-        warehouseCity,
-        warehouseCountry,
-        ContactPhone,
-        ContactEmail,
-        ContactName,
-        ContactPosition,
+        warehouse_name: warehouseName,
+        address: warehouseAddress,
+        city: warehouseCity,
+        country: warehouseCountry,
+        contact_phone: ContactPhone,
+        contact_email: ContactEmail,
+        contact_name: ContactName,
+        contact_position: ContactPosition,
       })
-      .then(() => {})
-      .catch((response) => {
-        console.log(response);
+      .then(() => {
+        navigate("/warehouse");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
       });
   }
-  function checkPhoneNumber(ContactPhone) {
-    const regex = /^\+\d{1}\s\(\d{3}\)\s\d{3}-\d{4}$/;
-    if (ContactPhone.match(regex)) {
+  function checkPhoneNumber(phoneNumber) {
+    let phoneno = /^\d{10}$/;
+    if (phoneNumber.match(phoneno)) {
       return true;
     } else {
-      alert("Enter Phone Number with the correct format: {+1 (123) 123-123}");
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        ContactPhone: true,
+      }));
       return false;
     }
   }
-  function checkEmail(e) {
+  function checkEmail(email) {
     let regex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    if (e.target.value.match(regex)) {
+    if (email.match(regex)) {
       return true;
     } else return false;
   }
-  function validateform() {}
 
   return (
     <div className="outerdiv">
       <div className="container">
         <div className="container__heading">
-          <Link to={`/`} style={{ textDecoration: "none" }}>
-            <img src={arrowBack} className="container__heading--arrow" />
-          </Link>
-
-          {/* <button className="back-button" onClick={() => {window.history.back()}}></button> */}
-
+          <button
+            className="detailheader__back"
+            onClick={() => {
+              window.history.back();
+            }}
+          ></button>
           <h1>Add a New Warehouse</h1>
         </div>
         <div className="container__hr"></div>
@@ -266,7 +280,7 @@ export default function NewWarehouse() {
                 }`}
                 name="contactPhone"
                 placeholder="Phone Number"
-                onClick={handleChangeContactPhone}
+                onChange={handleChangeContactPhone}
               ></input>
               {errors.ContactPhone && (
                 <div className="error">
@@ -284,7 +298,7 @@ export default function NewWarehouse() {
                 }`}
                 name="contactEmail"
                 placeholder="Email"
-                onClick={handleChangeContactEmail}
+                onChange={handleChangeContactEmail}
               ></input>
               {errors.ContactEmail && (
                 <div className="error">
@@ -295,10 +309,6 @@ export default function NewWarehouse() {
             </div>
           </div>
           <div className="container__btndiv">
-            {/* // <Link to={`/`} style={{ textDecoration: "none" }}>
-            //   <button className="container__btndiv--cancel">Cancel</button>
-            // </Link> */}
-
             <button
               className="container__btndiv--cancel"
               onClick={() => {

@@ -1,11 +1,14 @@
 import error from "../../assets/icons/error-24px.svg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../components/NewWarehouse/NewWarehouse.scss";
 import "../EditInventory/EditInventory.scss";
 import "../AddInventory/AddInventory.scss";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function Addinventory() {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [itemName, setitemName] = useState("");
   const [Category, setCategory] = useState("");
   const [Status, setStatus] = useState("");
@@ -74,27 +77,39 @@ export default function Addinventory() {
 
     setErrors(errors);
 
+    if (Object.keys(errors).length > 0) {
+      return; // Return early if there are errors
+    }
+
     //make axios post request with these values
     axios
       .post("http://localhost:8080/api/inventories", {
-        itemName,
-        Category,
-        Description,
-        Status,
-        Quantity,
-        Warehouse,
+        warehouse_id: id,
+        item_name: itemName,
+        description: Description,
+        category: Category,
+        status: Status,
+        quantity: Quantity,
       })
-      .then(() => {})
-      .catch((response) => {
-        console.log(response);
+      .then(() => {
+        navigate("/inventory");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
       });
   }
 
   return (
     <div className="outerdiv">
+      {console.log(id)}
       <div className="container">
         <div className="container__heading">
-        <button className="back-button" onClick={() => {window.history.back()}}></button>
+          <button
+            className="back-button"
+            onClick={() => {
+              window.history.back();
+            }}
+          ></button>
           <h1>Add New Inventory Item</h1>
         </div>
         <div className="container__hr"></div>
@@ -265,7 +280,14 @@ export default function Addinventory() {
             </div>
           </div>
           <div className="container__btndiv">
-            <button className="container__btndiv--cancel"  onClick={() => {window.history.back()}}>Cancel</button>
+            <button
+              className="container__btndiv--cancel"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              Cancel
+            </button>
             <button className="container__btndiv--add">+ Add Item</button>
           </div>
         </form>
